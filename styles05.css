@@ -49,6 +49,7 @@ body {
 }
 
 #menu-img {
+    float: right;
     width: 80%;
     max-width: 400px;
     display: block;
