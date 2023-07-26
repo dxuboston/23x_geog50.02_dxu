@@ -1,0 +1,67 @@
+body {
+    font-family: Arial, sans-serif;
+}
+
+.centered {
+    margin: 0 auto;
+    max-width: 800px;
+}
+
+#breakfast-title, #lunch-title, #meal-variations-title, #favorite-fruits-title, #foco-hacks-title {
+    font-family: perpetua;
+    padding: 10px;
+}
+
+#breakfast-title {
+    background-color:green;
+}
+
+#lunch-title {
+    background-color:blue;
+}
+
+#meal-variations-title {
+    background-color:yellow;
+}
+
+#favorite-fruits-title {
+    background-color:purple;
+}
+
+#foco-hacks-title {
+    background-color:lightblue;
+}
+
+.breakfast-desc, .lunch-desc, .foco-hacks-desc {
+    margin: 10px 0;
+    padding: 10px;
+}
+
+#meal-variations {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+}
+
+#meal-variations th, #meal-variations td {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#menu-img {
+    width: 100%;
+    max-width: 400px;
+    display: block;
+    margin: 10px 0;
+}
+
+#favorite-fruits, #foco-hacks {
+    margin: 20px 0;
+}
+
+#prev-lab-link {
+    display: block;
+    margin-top: 30px;
+    color: blue;
+    text-decoration: none;
+}
