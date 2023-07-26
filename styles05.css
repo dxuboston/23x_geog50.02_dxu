@@ -40,7 +40,7 @@ body {
 #meal-variations {
     border-collapse: collapse;
     width: 100%;
-    margin: 20px 0;
+    margin: 20px;
 }
 
 #meal-variations th, #meal-variations td {
@@ -52,16 +52,15 @@ body {
     width: 100%;
     max-width: 400px;
     display: block;
-    margin: 10px 0;
+    margin: 10px;
 }
 
 #favorite-fruits, #foco-hacks {
-    margin: 20px 0;
+    margin: 20px;
 }
 
 #prev-lab-link {
     display: block;
     margin-top: 30px;
-    color: blue;
-    text-decoration: none;
+    color: green;
 }
