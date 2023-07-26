@@ -46,6 +46,7 @@ body {
 
 #meal-variations th, #meal-variations td {
     border: 1px solid #ddd;
+    position: relative;
     padding: 8px;
 }
 
