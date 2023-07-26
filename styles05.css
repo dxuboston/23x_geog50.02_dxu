@@ -39,14 +39,14 @@ body {
 
 #meal-variations {
     border-collapse: collapse;
-    position: relative;
+    position: left;
     width: 100%;
     margin: 20px;
 }
 
 #meal-variations th, #meal-variations td {
     border: 1px solid #ddd;
-    position: relative;
+    position: left;
     padding: 8px;
 }
 
