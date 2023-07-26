@@ -39,6 +39,7 @@ body {
 
 #meal-variations {
     border-collapse: collapse;
+    position: relative;
     width: 100%;
     margin: 20px;
 }
