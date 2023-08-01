@@ -23,8 +23,16 @@
 
               if (guesses.includes(id)) {
                 $("#error_msg".html("You already guessed " + id);
+              } else {
+                guesses = guesses + id;
+
+                total_guesses = total_guesses - 1;
+                if (total_guesses < 0) {
+                  $("#error_msg").html("You are out of guesses. YOU LOSE!")
+                } else {
+                  $(#numleft).html(total_guesses);
+                }
               }
-              
             }
           )
 
