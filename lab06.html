@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lab06</title>
+    <link rel="stylesheet" href="styles05.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="centered">
+    <h1 id="breakfast-title">What I Ate for Breakfast</h1>
+    <p class="breakfast-desc">My breakfast is typically a ritual. I eat the same things in the morning every day. 
+        I wake up, go to FoCo, and get my classic scrambled eggs and oatmeal. 
+        I put hot sauce on my eggs and brown sugar in my oatmeal, and it is awesome. 
+        I sit down on Lightside and listen to the FoCo music bump. Then, I am on my way to 
+        whatever it is I have going on that day. However, before I leave, I always take a 
+        muffin (or whatever delectable baked good is available) for the road.</p>
+    <h2 id="lunch-title">What I Ate for Lunch</h2>
+    <p class="lunch-desc">For lunchtime, I am usually pretty hungry. This is because I have class before lunch 
+    always, which is somewhat a rule for me. FoCo, especially in the summer, is usually
+    pretty terrible for lunch. This means I usually have the special if it is edible, 
+    or I get a smoked turkey sub from the deli section, with just a dash of honey mustard. 
+    I usually will couple this with a banana or another piece of fruit. Yum!</p>
+
+        <a href="https://dining.dartmouth.edu/"><img id="food-img" src="https://www.engelberth.com/wp-content/uploads/2016/07/Dartmouth-College-1953-Dining-3.jpg"></a>
+
+    <h2 id="meal-variations-title">My Weekly Meal Variations</h2>
+    <table id="meal-variations">
+        <tr>
+            <th>Day</th>
+            <th>Breakfast</th>
+            <th>Lunch</th>
+        </tr>
+        <tr>
+            <td>Monday</td>
+            <td>Scrambled Eggs and Oatmeal</td>
+            <td>Smoked Turkey Sub</td>
+        </tr>
+        <tr>
+            <td>Tuesday</td>
+            <td>Scrambled Eggs and Oatmeal</td>
+            <td>Yogurt/Fruit</td>
+        </tr>
+        <tr>
+            <td>Wednesday</td>
+            <td>Scrambled Eggs and Oatmeal</td>
+            <td>Salad</td>
+        </tr>
+    </table>
+
+    <a href="https://menu.dartmouth.edu/todaysmenu"><img id="menu-img" src="https://marvel-b1-cdn.bc0a.com/f00000000283318/admissions.dartmouth.edu/sites/admissions.prod/files/styles/400x274_blog/public/admissions/content/blog-post/photos/foco.jpg?itok=i_2IxNsJ&timestamp=1639964141"></a>
+
+    <h2 id="favorite-fruits-title">My Favorite Fruits</h2>
+    <ul id="favorite-fruits">
+        <li><sup>Apples</sup></li>
+        <li><sub>Bananas</sub></li>
+        <li><del>Strawberries</del></li>
+        <li><i>Blueberries</i></li>
+    </ul>
+
+        <a href="https://foodfornet.com/66-exotic-fruits-from-around-the-world-with-pictures/">Some cool fruits.</a>
+
+    <h2 id="foco-hacks-title">Some FoCo Hacks: </h2>
+    <p class="foco-hacks-desc"><strong>Random hacks that I am thinking of on the spot</strong></p>
+    <ol id="foco-hacks">
+        <li>The chicken nuggets are <strong>so</strong> good.</li>
+        <li>You can put a FoCo cookie in your ice cream.</li>
+        <li>Be nice to the FoCo workers.</li>
+        <li>You can ask hte deli for deli ingredients that you can then mix into other foods.</li>
+        <li>Beyond Burgers are so good.</li>
+        <li>The Kosher station is a great option, especially for pita + hummus.</li>
+        <li>The upstairs bathroom is usually clean and empty.</li>
+    </ol>
+
+    <a id="prev-lab-link" href="lab02.html">This is a link to my previous lab.</a>
+
+       <!-- Adding buttons -->
+        <button id="toggle-meal-btn">Toggle Meal Variations</button>
+        <button id="color-favorite-fruits-btn">Color Favorite Fruits</button>
+
+        <script>
+        $(document).ready(function(){
+            // Toggle visibility of meal variations
+            $("#toggle-meal-btn").click(function(){
+                $("#meal-variations").toggle();
+            });
+
+            // Change color of favorite fruits list on hover
+            $("#color-favorite-fruits-btn").hover(function(){
+                $("#favorite-fruits").css("color", "red");
+            }, function(){
+                $("#favorite-fruits").css("color", "black");
+            });
+        });
+        </script>
+
+    </div>
+</body>
+</html>
