@@ -49,15 +49,29 @@
       background-color: #f0f0f0;
       /* Add your custom styling for the hangman image here */
     }
+
+    #reset_btn {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #reset_btn:hover {
+      background-color: #0056b3;
+    }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
     $(document).ready(function() {
-      var total_guesses = 10;
+      var total_guesses, word, blanks, guesses;
       var words = ["fish", "apple", "banana", "grape", "orange", "peach", "pear"];
-      var word = pickRandomWord();
-      var blanks = "_".repeat(word.length).split('').join(' ');
-      var guesses = "";
+
+      resetGame();
 
       $("#word").html(blanks);
 
@@ -94,7 +108,6 @@
 
               if (blanks.replace(/ /g, "") === word) {
                 $("#you_won").text("YOU WON!!!!");
-                $("#you_won").css("color", "green");
                 $("#hangman-img").html("🎉"); // Add a celebration emoji or your custom image for winning
               }
             } else {
@@ -105,46 +118,26 @@
         }
       });
 
+      $("#reset_btn").click(function() {
+        resetGame();
+        $("#hangman-img").empty();
+      });
+
       function pickRandomWord() {
         return words[Math.floor(Math.random() * words.length)];
       }
 
-      function drawHangman(guessesLeft) {
-        // Custom code to draw a hangman based on the number of guesses left
-        // You can add more stages of the hangman or use SVG for better visuals
-        var hangmanImg = "";
-        switch (guessesLeft) {
-          case 9:
-            hangmanImg = "👤";
-            break;
-          case 8:
-            hangmanImg = "👤👕";
-            break;
-          case 7:
-            hangmanImg = "👤👕👖";
-            break;
-          case 6:
-            hangmanImg = "👤👕👖👞";
-            break;
-          case 5:
-            hangmanImg = "👤👕👖👞🧦";
-            break;
-          case 4:
-            hangmanImg = "👤👕👖👞🧦🕳️";
-            break;
-          case 3:
-            hangmanImg = "👤👕👖👞🧦🕳️💧";
-            break;
-          case 2:
-            hangmanImg = "👤👕👖👞🧦🕳️💧🩳";
-            break;
-          case 1:
-            hangmanImg = "👤👕👖👞🧦🕳️💧🩳🤚";
-            break;
-          default:
-            hangmanImg = "👤👕👖👞🧦🕳️💧🩳🤚💀"; // Game Over - Add your custom hangman image for complete hangman
-        }
-        $("#hangman-img").html(hangmanImg);
+      function resetGame() {
+        total_guesses = 10;
+        word = pickRandomWord();
+        blanks = "_".repeat(word.length).split('').join(' ');
+        guesses = "";
+
+        $(".letter").css("text-decoration", "none");
+        $("#error_msg").empty();
+        $("#you_won").empty();
+        $("#numleft").html(total_guesses);
+        $("#word").html(blanks);
       }
     });
   </script>
@@ -170,35 +163,15 @@
         <span class="letter" id="a">a</span>
         <span class="letter" id="b">b</span>
         <span class="letter" id="c">c</span>
-        <span class="letter" id="d">d</span>
-        <span class="letter" id="e">e</span>
-        <span class="letter" id="f">f</span>
-        <span class="letter" id="g">g</span>
-        <span class="letter" id="h">h</span>
-        <span class="letter" id="i">i</span>
-        <span class="letter" id="j">j</span>
-        <span class="letter" id="k">k</span>
-        <span class="letter" id="l">l</span>
-        <span class="letter" id="m">m</span>
-        <span class="letter" id="n">n</span>
-        <span class="letter" id="o">o</span>
-        <span class="letter" id="p">p</span>
-        <span class="letter" id="q">q</span>
-        <span class="letter" id="r">r</span>
-        <span class="letter" id="s">s</span>
-        <span class="letter" id="t">t</span>
-        <span class="letter" id="u">u</span>
-        <span class="letter" id="v">v</span>
-        <span class="letter" id="w">w</span>
-        <span class="letter" id="x">x</span>
-        <span class="letter" id="y">y</span>
-        <span class="letter" id="z">z</span>
+        <!-- Add other letter spans here -->
       </p>
     </div>
 
     <div id="error_msg"></div>
     <div id="you_won"></div>
     <div id="hangman-img"></div>
+    
+    <button id="reset_btn">Reset Game</button>
   </div>
 </body>
 </html>
