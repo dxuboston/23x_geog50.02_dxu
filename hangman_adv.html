@@ -35,6 +35,13 @@
       font-weight: bold;
     }
 
+    #you_won {
+      font-size: 24px;
+      font-weight: bold;
+      color: green;
+      margin-top: 10px;
+    }
+
     #hangman-img {
       margin-top: 20px;
       width: 200px;
@@ -86,7 +93,8 @@
               $("#word").html(blanks);
 
               if (blanks.replace(/ /g, "") === word) {
-                $("#error_msg").text("YOU WON!!!!");
+                $("#you_won").text("YOU WON!!!!");
+                $("#you_won").css("color", "green");
                 $("#hangman-img").html("🎉"); // Add a celebration emoji or your custom image for winning
               }
             } else {
@@ -189,6 +197,7 @@
     </div>
 
     <div id="error_msg"></div>
+    <div id="you_won"></div>
     <div id="hangman-img"></div>
   </div>
 </body>
