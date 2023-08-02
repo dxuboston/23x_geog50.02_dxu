@@ -11,7 +11,7 @@
         </style>
 
         <script>
-            var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ'; // Replace with your Mapbox access token
+            var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ'; 
 
             var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, 
             { maxZoom: 19,
@@ -25,7 +25,7 @@
                     layers: [satellite]
                 });
 
-                var marker = L.marker([43.9933, -71.8160]).addTo(map);  // Add a marker to the map
+                var marker = L.marker([43.9933, -71.8160]).addTo(map); // adding a marker to the map 
             }
         </script>
 
