@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Hangman</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    #hangman-container {
+      text-align: center;
+    }
+
+    .letter {
+      display: inline-block;
+      padding: 5px 10px;
+      margin: 5px;
+      cursor: pointer;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .letter:hover {
+      background-color: #f0f0f0;
+    }
+
+    #error_msg {
+      color: red;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      var total_guesses = 10;
+      var word = "fish";
+      var blanks = "_ _ _ _";
+      var guesses = "";
+
+      $("#word").html(blanks);
+
+      $(".letter").click(function() {
+        var id = $(this).attr('id');
+        console.log("Clicked on " + id);
+
+        if (guesses.includes(id)) {
+          $("#error_msg").html("You already guessed " + id);
+        } else {
+          guesses = guesses + id;
+          $(this).css("text-decoration", "line-through");
+
+          total_guesses = total_guesses - 1;
+          if (total_guesses <= 0) {
+            $("#error_msg").html("You are out of guesses. YOU LOSE!");
+          } else {
+            $("#numleft").html(total_guesses);
+
+            if (word.includes(id)) {
+              var indices = [];
+              for (var i = 0; i < word.length; i++) {
+                if (word[i] === id) {
+                  indices.push(i);
+                }
+              }
+
+              indices.forEach(function(index) {
+                blanks = blanks.substr(0, index * 2) + id + blanks.substr(index * 2 + 1);
+              });
+
+              $("#word").html(blanks);
+            }
+
+            if (blanks.replace(/ /g, "") === word) {
+              $("#error_msg").text("YOU WON!!!!");
+            }
+          }
+        }
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id="hangman-container">
+    <h1>Hangman!</h1>
+    <div id="chances">
+      <p>
+        You have <span id="numleft">10</span> chances left.
+      </p>
+    </div>
+
+    <div id="wordspace">
+      <p>
+        The word to guess is <span id="word" style="font-weight: bold;"></span>
+      </p>
+    </div>
+
+    <div id="entry">
+      <p>Click on a letter to make a guess.</p>
+      <p>
+        <span class="letter" id="a">a</span>
+        <span class="letter" id="b">b</span>
+        <span class="letter" id="c">c</span>
+        <span class="letter" id="d">d</span>
+        <span class="letter" id="e">e</span>
+        <span class="letter" id="f">f</span>
+        <span class="letter" id="g">g</span>
+        <span class="letter" id="h">h</span>
+        <span class="letter" id="i">i</span>
+        <span class="letter" id="j">j</span>
+        <span class="letter" id="k">k</span>
+        <span class="letter" id="l">l</span>
+        <span class="letter" id="m">m</span>
+        <span class="letter" id="n">n</span>
+        <span class="letter" id="o">o</span>
+        <span class="letter" id="p">p</span>
+        <span class="letter" id="q">q</span>
+        <span class="letter" id="r">r</span>
+        <span class="letter" id="s">s</span>
+        <span class="letter" id="t">t</span>
+        <span class="letter" id="u">u</span>
+        <span class="letter" id="v">v</span>
+        <span class="letter" id="w">w</span>
+        <span class="letter" id="x">x</span>
+        <span class="letter" id="y">y</span>
+        <span class="letter" id="z">z</span>
+      </p>
+    </div>
+
+    <div id="error_msg"></div>
+  </div>
+</body>
+</html>
