@@ -5,7 +5,7 @@
         <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
         <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
         <style>
-            #map { height: 400px; width: 700px; margin: auto; }
+            #map { height: 600px; width: 900px; margin: auto; }
             html, body { height: 100%; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;}
             h1 {text-align: center;}
         </style>
@@ -23,7 +23,7 @@
             function initialize() {
                 var map = L.map("map", {
                     center: [43.9933, -71.8160],
-                    zoom: 15, 
+                    zoom: 10, 
                     layers: [satellite]
                 });
 
