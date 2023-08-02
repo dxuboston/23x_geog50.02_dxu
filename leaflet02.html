@@ -10,6 +10,8 @@
             h1 {text-align: center;}
         </style>
 
+        <script src="New_Hampshire_Personal_Wireless_Service_Facilities.geojson"></script>
+
         <script>
             var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ'; 
 
@@ -25,13 +27,9 @@
                     layers: [satellite]
                 });
 
-                var marker = L.marker([43.9933, -71.8160]).addTo(map);  // Adding a marker to the map 
+                var marker = L.marker([43.9933, -71.8160]).addTo(map); // adding a marker to the map 
 
-                fetch('New_Hampshire_Personal_Wireless_Service_Facilities.geojson')
-                    .then(response => response.json())
-                    .then(data => {
-                        L.geoJson(data).addTo(map);
-                    });
+                L.geoJson(celltowers_geojson).addTo(map);
             }
         </script>
 
