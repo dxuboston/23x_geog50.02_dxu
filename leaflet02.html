@@ -11,6 +11,7 @@
         </style>
 
         <script src="New_Hampshire_Personal_Wireless_Service_Facilities.geojson"></script>
+        <script src="New_Hampshire_Railroads.geojson"></script>
 
         <script>
             var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ'; 
@@ -33,6 +34,17 @@
                     opacity: 0.5,
                     onEachFeature: function(feature, layer) {
                         layer.bindPopup("<b>Cell Tower Location: " + feature.properties.GISMUNIC + "</b>");
+                    }
+
+                }).addTo(map);
+
+                L.geoJson(rails_geojson,
+                {
+                    color: "brown",
+                    weight: 5,
+                    opacity: 0.5,
+                    onEachFeature: function(feature, layer) {
+                        layer.bindPopup("<b>Rail Owner Name: " + feature.properties.NAME + "</b>");
                     }
 
                 }).addTo(map);
