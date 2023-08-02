@@ -27,9 +27,15 @@
                     layers: [satellite]
                 });
 
-                var marker = L.marker([43.9933, -71.8160]).addTo(map); // adding a marker to the map 
+                L.geoJson(towers_geojson,
+                {
+                    color: "blue",
+                    opacity: 0.5,
+                    onEachFeature: function(feature, layer) {
+                        layer.bindPopup("<b>Cell Tower Name: " + feature.properties.GISMUNIC + "</b>");
+                    }
 
-                L.geoJson(towers_geojson).addTo(map);
+                }).addTo(map);
             }
         </script>
 
