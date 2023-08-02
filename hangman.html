@@ -8,7 +8,7 @@
     
       $(document).ready(
 
-        funciton() {
+        function() {
 
       var total_guesses = 10 
       var word = "f i s h";
@@ -22,7 +22,7 @@
               console.log("Clicked on " + id);
 
               if (guesses.includes(id)) {
-                $("#error_msg".html("You already guessed " + id);
+                $("#error_msg").html("You already guessed " + id);
               } else {
                 guesses = guesses + id;
 
