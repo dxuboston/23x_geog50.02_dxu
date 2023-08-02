@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html> 
+    <head>
+        <title>Hello Moosilauke Ravine Lodge!</title>
+        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+        <style>
+            #map { height: 400px; width: 700px; margin: auto; }
+            html, body { height: 100%; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;}
+            h1 {text-align: center;}
+        </style>
+
+        <script>
+            var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ'; // Replace with your Mapbox access token
+
+            var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, 
+            { maxZoom: 19,
+            attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
+            });
+
+            function initialize() {
+                var map = L.map("map", {
+                    center: [43.9933, -71.8160],
+                    zoom: 15, 
+                    layers: [satellite]
+                });
+
+                var marker = L.marker([43.9933, -71.8160]).addTo(map);  // Add a marker to the map
+            }
+        </script>
+
+    </head>
+    <body onload="initialize()">
+        <h1>Moosilauke Ravine Lodge!</h1>
+        <div id="map"></div>
+    </body>
+</html>
