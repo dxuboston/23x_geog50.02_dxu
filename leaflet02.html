@@ -32,7 +32,7 @@
                     color: "blue",
                     opacity: 0.5,
                     onEachFeature: function(feature, layer) {
-                        layer.bindPopup("<b>Cell Tower Name: " + feature.properties.GISMUNIC + "</b>");
+                        layer.bindPopup("<b>Cell Tower Location: " + feature.properties.GISMUNIC + "</b>");
                     }
 
                 }).addTo(map);
