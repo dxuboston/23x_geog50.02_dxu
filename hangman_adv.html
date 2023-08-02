@@ -9,6 +9,7 @@
       align-items: center;
       height: 100vh;
       font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
     }
 
     #hangman-container {
@@ -25,7 +26,7 @@
     }
 
     .letter:hover {
-      background-color: #f0f0f0;
+      background-color: #e0e0e0;
     }
 
     #error_msg {
@@ -33,13 +34,22 @@
       margin-top: 10px;
       font-weight: bold;
     }
+
+    #hangman-img {
+      margin-top: 20px;
+      width: 200px;
+      height: 200px;
+      background-color: #f0f0f0;
+      /* Add your custom styling for the hangman image here */
+    }
   </style>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <script>
     $(document).ready(function() {
       var total_guesses = 10;
-      var word = "fish";
-      var blanks = "_ _ _ _";
+      var words = ["fish", "apple", "banana", "grape", "orange", "peach", "pear"];
+      var word = pickRandomWord();
+      var blanks = "_".repeat(word.length).split('').join(' ');
       var guesses = "";
 
       $("#word").html(blanks);
@@ -56,7 +66,8 @@
 
           total_guesses = total_guesses - 1;
           if (total_guesses <= 0) {
-            $("#error_msg").html("You are out of guesses. YOU LOSE!");
+            $("#error_msg").html("You are out of guesses. YOU LOSE! The word was: " + word);
+            $("#hangman-img").html("☹️"); // Add a sad face or your custom hangman image for game over
           } else {
             $("#numleft").html(total_guesses);
 
@@ -73,14 +84,60 @@
               });
 
               $("#word").html(blanks);
-            }
 
-            if (blanks.replace(/ /g, "") === word) {
-              $("#error_msg").text("YOU WON!!!!");
+              if (blanks.replace(/ /g, "") === word) {
+                $("#error_msg").text("YOU WON!!!!");
+                $("#hangman-img").html("🎉"); // Add a celebration emoji or your custom image for winning
+              }
+            } else {
+              $("#error_msg").html("Incorrect guess! Try again.");
+              drawHangman(total_guesses);
             }
           }
         }
       });
+
+      function pickRandomWord() {
+        return words[Math.floor(Math.random() * words.length)];
+      }
+
+      function drawHangman(guessesLeft) {
+        // Custom code to draw a hangman based on the number of guesses left
+        // You can add more stages of the hangman or use SVG for better visuals
+        var hangmanImg = "";
+        switch (guessesLeft) {
+          case 9:
+            hangmanImg = "👤";
+            break;
+          case 8:
+            hangmanImg = "👤👕";
+            break;
+          case 7:
+            hangmanImg = "👤👕👖";
+            break;
+          case 6:
+            hangmanImg = "👤👕👖👞";
+            break;
+          case 5:
+            hangmanImg = "👤👕👖👞🧦";
+            break;
+          case 4:
+            hangmanImg = "👤👕👖👞🧦🕳️";
+            break;
+          case 3:
+            hangmanImg = "👤👕👖👞🧦🕳️💧";
+            break;
+          case 2:
+            hangmanImg = "👤👕👖👞🧦🕳️💧🩳";
+            break;
+          case 1:
+            hangmanImg = "👤👕👖👞🧦🕳️💧🩳🤚";
+            break;
+          default:
+            hangmanImg = "👤👕👖👞🧦🕳️💧🩳🤚💀"; // Game Over - Add your custom hangman image for complete hangman
+        }
+        $("#hangman-img").html(hangmanImg);
+      }
     });
   </script>
 </head>
@@ -132,6 +189,7 @@
     </div>
 
     <div id="error_msg"></div>
+    <div id="hangman-img"></div>
   </div>
 </body>
 </html>
