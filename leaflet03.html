@@ -31,6 +31,19 @@
             attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
             });
 
+            function pointSymbology(feature) { 
+                var elevation = feature.properties.ELEV_FT;
+                var pointColor = "#a1d76a;"
+
+                if (elevation > 500.0) { pointColor = "#777777";}
+                if (elevation < 100) { pointColor = "#e9a3c9";}
+
+                return { 
+                    color: pointColor,
+                    opacity: 1
+                }
+            }
+
             function initialize() {
                 var map = L.map("map", {
                     center: [43.9933, -71.8160], // Coordinates to Mousilake Ravine Lodge
@@ -40,8 +53,7 @@
 
                 towerslayer = L.geoJson(towers_geojson,
                 {
-                    color: "blue",
-                    opacity: 0.5,
+                    style: pointSymbology,
                     onEachFeature: function(feature, layer) {
                         layer.bindPopup("<b>Cell Tower Location: " + 
                             feature.properties.GISMUNIC + "</b><br>" + 
