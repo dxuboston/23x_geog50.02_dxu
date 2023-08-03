@@ -16,6 +16,7 @@
                 justify-content: center;
             }
             h1 {text-align: center;}
+            #buttons { padding: 10px; background: #00693e; }
         </style>
 
         <script src="New_Hampshire_Personal_Wireless_Service_Facilities.geojson"></script>
@@ -87,5 +88,8 @@
     <body onload="initialize()">
         <h1>Cell Towers and Railroads Around Moosilauke Ravine Lodge</h1>
         <div id="map"></div>
+        <div id="button">
+            <button id="toggleRails">Toggle the Railroads Layer.</button>
+        </div>
     </body>
 </html>
