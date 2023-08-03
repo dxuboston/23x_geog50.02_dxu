@@ -14,6 +14,7 @@
         <script src="New_Hampshire_Railroads.geojson"></script>
 
         <script>
+            var towerslayer;
             var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ'; 
 
             var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, 
@@ -28,19 +29,24 @@
                     layers: [satellite]
                 });
 
-                L.geoJson(towers_geojson,
+                towerslayer = L.geoJson(towers_geojson,
                 {
                     color: "blue",
                     opacity: 0.5,
                     onEachFeature: function(feature, layer) {
-                        layer.bindPopup("<b>Cell Tower Location: " + feature.properties.GISMUNIC + "</b>");
+                        layer.bindPopup("<b>Cell Tower Location: " + 
+                            feature.properties.GISMUNIC + 
+                            "</b><br>" + "Elevation (ft): " +
+                            feature.properties.ELEV_FT) + "<br>" +
+                            "Tower Ownder: " + 
+                            feature.properties.ENTITY_NAM;
                     }
 
                 }).addTo(map);
 
                 L.geoJson(rails_geojson,
                 {
-                    color: "brown",
+                    color: "brown",s 
                     weight: 5,
                     opacity: 0.5,
                     onEachFeature: function(feature, layer) {
