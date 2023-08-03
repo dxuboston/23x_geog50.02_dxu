@@ -26,6 +26,7 @@
             var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ'; 
             var towerslayer;
             var railslayer;
+            var railsVisible = false;
 
             var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, 
             { maxZoom: 19,
@@ -80,7 +81,18 @@
                             feature.properties.SECT_LENGTH);
                     }
 
-                }).addTo(map);
+                });
+
+                $("#toggleRails").click( function() {
+                    if (railsVisible) {
+                        railsVisible = false;
+                        railslayer.removeFrom(map);
+                    } else {
+                        railsVisible = true;
+                        railslayer.addTo(map);
+                    }
+
+                })
             }
         </script>
 
