@@ -24,6 +24,7 @@
         <script>
             var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ'; 
             var towerslayer;
+            var railslayer;
 
             var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, 
             { maxZoom: 19,
@@ -43,8 +44,8 @@
                     opacity: 0.5,
                     onEachFeature: function(feature, layer) {
                         layer.bindPopup("<b>Cell Tower Location: " + 
-                            feature.properties.GISMUNIC + 
-                            "</b><br>" + "Elevation (ft): " +
+                            feature.properties.GISMUNIC + "</b><br>" + 
+                            "Elevation (ft): " +
                             feature.properties.ELEV_FT + "<br>" +
                             "Tower Owner: " + 
                             feature.properties.ENTITY_NAM);
@@ -52,13 +53,20 @@
 
                 }).addTo(map);
 
-                L.geoJson(rails_geojson,
+                railslayer = L.geoJson(rails_geojson,
                 {
                     color: "brown",
                     weight: 5,
                     opacity: 0.5,
                     onEachFeature: function(feature, layer) {
-                        layer.bindPopup("<b>Rail Owner Name: " + feature.properties.NAME + "</b>");
+                        layer.bindPopup("<b>Rail Owner Name: " + 
+                            feature.properties.NAME + "</b><br>" + 
+                            "Status: " + 
+                            feature.properties.STATUS + "<br>" + 
+                            "Owner: " + 
+                            feature.properties.OWNERSHIP + "<br>" + 
+                            "Operator: " + 
+                            feature.properties.OPERATOR);
                     }
 
                 }).addTo(map);
