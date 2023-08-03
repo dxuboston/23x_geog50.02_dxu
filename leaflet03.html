@@ -28,6 +28,7 @@
             var towerslayer;
             var railslayer;
             var railsVisible = false;
+            var towersVisible = false;
 
             var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, 
             { maxZoom: 19,
@@ -65,7 +66,7 @@
                             feature.properties.ENTITY_NAM);
                     }
 
-                }).addTo(map);
+                });
 
                 railslayer = L.geoJson(rails_geojson,
                 {style: lineSymbology,
@@ -93,6 +94,17 @@
                         railslayer.addTo(map);
                     }
 
+                });
+
+                $("#toggleTowers").click( function() {
+                    if (towersVisible) {
+                        towersVisible = false;
+                        towerslayer.removeFrom(map);
+                    } else {
+                        towersVisible = true;
+                        towerslayer.addTo(map);
+                    }
+
                 })
             }
         </script>
@@ -103,6 +115,7 @@
         <div id="map"></div>
         <div id="button">
             <button id="toggleRails">Toggle the Railroads Layer.</button>
+            <button id="toggleTowers">Toggle the Cell Towers Layer.</button>
         </div>
     </body>
 </html>
