@@ -1,97 +1,122 @@
 <!DOCTYPE html>
-<html> 
-    <head>
-        <title>Cell Towers and Railroads Around Moosilauke Ravine Lodge</title>
-        <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-        <style>
-            #map { height: 600px; width: 900px; margin: auto; }
-            html, body { 
-                height: 100%; 
-                margin: 0; 
-                padding: 0; 
-                display: flex; 
-                flex-direction: column; 
-                align-items: center; 
-                justify-content: center;
-            }
-            h1 {text-align: center;}
-            #buttons { padding: 10px; background: #00693e; }
-        </style>
+<html>
 
-        <script>
-            var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ'; 
-            var railsVisible = true;
-            var towersVisible = true;
+<head>
+    <title>Cell Towers and Railroads Around Moosilauke Ravine Lodge</title>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        #map {
+            height: 600px;
+            width: 900px;
+            margin: auto;
+        }
 
-            var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, 
-            { maxZoom: 19,
+        html,
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        #buttons {
+            padding: 10px;
+            background: #00693e;
+        }
+    </style>
+
+    <script>
+        var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ';
+        var railsVisible = true;
+        var towersVisible = true;
+
+        var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, {
+            maxZoom: 19,
             attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
+        });
+
+        function lineSymbology(feature) {
+            var length = feature.properties.SECT_LENGTH;
+            var lineColor = "#a1d76a";
+
+            if (length > 20.0) {
+                lineColor = "#777777";
+                lineWidth = 4;
+            }
+            if (length < 5) {
+                lineColor = "#e9a3c9";
+                lineWidth = 6;
+            }
+
+            return {
+                color: lineColor,
+                weight: lineWidth,
+                opacity: 1
+            }
+        }
+
+        function initialize() {
+            var map = L.map("map", {
+                center: [43.9933, -71.8160], // Coordinates to Mousilake Ravine Lodge
+                zoom: 10,
+                layers: [satellite]
             });
 
-            function lineSymbology(feature) { 
-                var length = feature.properties.SECT_LENGTH;
-                var lineColor = "#a1d76a";
+            var towersResponse = $.ajax({
+                url: "New_Hampshire_Personal_Wireless_Service_Facilities.geojson",
+                dataType: "json"
+            });
 
-                if (length > 20.0) { lineColor = "#777777"; lineWidth = 4;}
-                if (length < 5) { lineColor = "#e9a3c9"; lineWidth = 6;}
+            var railsResponse = $.ajax({
+                url: "New_Hampshire_Railroads.geojson",
+                dataType: "json"
+            });
 
-                return { 
-                    color: lineColor,
-                    weight: lineWidth,
-                    opacity: 1
-                }
-            }
-
-            function initialize() {
-                var map = L.map("map", {
-                    center: [43.9933, -71.8160], // Coordinates to Mousilake Ravine Lodge
-                    zoom: 10, 
-                    layers: [satellite]
-                });
-
-                var response = $.ajax({
-                    url: "New_Hampshire_Personal_Wireless_Service_Facilities.geojson",
-                    dataType: "json",
-                    success: console.log("towers data loaded!"),
-                    error: function(xhr) {
-                    alert(xhr.statusText);
-                    }
-                });
-
-                $.when(response).done(function() {
-
-                var towerslayer = L.geoJson(response.responseJSON,
-                {onEachFeature: function(feature, layer) {
-                        layer.bindPopup("<b>Cell Tower Location: " + 
-                            feature.properties.GISMUNIC + "</b><br>" + 
+            $.when(towersResponse, railsResponse).done(function(towersData, railsData) {
+                var towerslayer = L.geoJson(towersData[0], {
+                    onEachFeature: function(feature, layer) {
+                        layer.bindPopup("<b>Cell Tower Location: " +
+                            feature.properties.GISMUNIC + "</b><br>" +
                             "Elevation (ft): " +
                             feature.properties.ELEV_FT + "<br>" +
-                            "Tower Owner: " + 
+                            "Tower Owner: " +
                             feature.properties.ENTITY_NAM);
                     }
-
                 }).addTo(map);
 
-                railslayer = L.geoJson(rails_geojson,
-                {style: lineSymbology,
+                var railslayer = L.geoJson(railsData[0], {
+                    style: lineSymbology,
                     onEachFeature: function(feature, layer) {
-                        layer.bindPopup("<b>Rail Owner Name: " + 
-                            feature.properties.NAME + "</b><br>" + 
-                            "Status: " + 
-                            feature.properties.STATUS + "<br>" + 
-                            "Name: " + 
-                            feature.properties.NAME + "<br>" + 
-                            "Operator: " + 
-                            feature.properties.OPERATOR + "<br>" + 
-                            "Section Length: " + 
+                        layer.bindPopup("<b>Rail Owner Name: " +
+                            feature.properties.NAME + "</b><br>" +
+                            "Status: " +
+                            feature.properties.STATUS + "<br>" +
+                            "Name: " +
+                            feature.properties.NAME + "<br>" +
+                            "Operator: " +
+                            feature.properties.OPERATOR + "<br>" +
+                            "Section Length: " +
                             feature.properties.SECT_LENGTH);
                     }
+                }).addTo(map);
 
-                });
+                // Show the buttons after data is loaded
+                $("#toggleRails").show();
+                $("#toggleTowers").show();
 
-                $("#toggleRails").click( function() {
+                // Log to console
+                console.log("Data for both towers and rails were added correctly.");
+
+                $("#toggleRails").click(function() {
                     if (railsVisible) {
                         railsVisible = false;
                         railslayer.removeFrom(map);
@@ -99,12 +124,9 @@
                         railsVisible = true;
                         railslayer.addTo(map);
                     }
-
                 });
 
-
-                $("#toggleTowers").show()
-                $("#toggleTowers").click( function() {
+                $("#toggleTowers").click(function() {
                     if (towersVisible) {
                         towersVisible = false;
                         towerslayer.removeFrom(map);
@@ -112,19 +134,21 @@
                         towersVisible = true;
                         towerslayer.addTo(map);
                     }
-
-                })
+                });
             });
-            }
-        </script>
+        }
+    </script>
 
-    </head>
-    <body onload="initialize()">
-        <h1>Cell Towers and Railroads Around Moosilauke Ravine Lodge</h1>
-        <div id="map"></div>
-        <div id="button">
-            <button id="toggleRails">Toggle the Railroads Layer.</button>
-            <button id="toggleTowers" hidden>Toggle the Cell Towers Layer.</button>
-        </div>
-    </body>
+</head>
+
+<body onload="initialize()">
+    <h1>Cell Towers and Railroads Around Moosilauke Ravine Lodge</h1>
+    <div id="map"></div>
+    <div id="button">
+        <!-- Initially hide the buttons -->
+        <button id="toggleRails" hidden>Toggle the Railroads Layer.</button>
+        <button id="toggleTowers" hidden>Toggle the Cell Towers Layer.</button>
+    </div>
+</body>
+
 </html>
