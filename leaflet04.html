@@ -25,78 +25,76 @@
 
         <script>
             var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ'; 
-            var towerslayer;
-            var railslayer;
-            var railsVisible = false;
-            var towersVisible = false;
-        
+            var railsVisible = true;
+            var towersVisible = true;
+
             var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, 
             { maxZoom: 19,
             attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
             });
-        
+
             function lineSymbology(feature) { 
                 var length = feature.properties.SECT_LENGTH;
                 var lineColor = "#a1d76a";
-                var lineWidth = 3; // Initialize lineWidth variable
-        
-                if (length > 20.0) { lineColor = "#777777"; lineWidth = 4; }
-                if (length < 5) { lineColor = "#e9a3c9"; lineWidth = 6; }
-        
+
+                if (length > 20.0) { lineColor = "#777777"; lineWidth = 4;}
+                if (length < 5) { lineColor = "#e9a3c9"; lineWidth = 6;}
+
                 return { 
                     color: lineColor,
                     weight: lineWidth,
                     opacity: 1
-                };
+                }
             }
-        
+
             function initialize() {
                 var map = L.map("map", {
                     center: [43.9933, -71.8160], // Coordinates to Mousilake Ravine Lodge
                     zoom: 10, 
                     layers: [satellite]
                 });
-        
+
                 var response = $.ajax({
                     url: "New_Hampshire_Personal_Wireless_Service_Facilities.geojson",
                     dataType: "json",
-                    success: function(data) {
-                        console.log("Cell tower data loaded!");
-                        towerslayer = L.geoJson(data, {
-                            onEachFeature: function(feature, layer) {
-                                layer.bindPopup("<b>Cell Tower Location: " + 
-                                    feature.properties.GISMUNIC + "</b><br>" + 
-                                    "Elevation (ft): " +
-                                    feature.properties.ELEV_FT + "<br>" +
-                                    "Tower Owner: " + 
-                                    feature.properties.ENTITY_NAM);
-                            }
-                        }).addTo(map);
-                    },
-                    error: function(xhr) { 
-                        alert(xhr.statusText);
+                    success: console.log("towers data loaded!"),
+                    error: function(xhr) {
+                    alert(xhr.statusText);
                     }
                 });
-        
+
                 $.when(response).done(function() {
-                    railslayer = L.geoJson(New_Hampshire_Railroads, {
-                        style: lineSymbology,
-                        onEachFeature: function(feature, layer) {
-                            layer.bindPopup("<b>Rail Owner Name: " + 
-                                feature.properties.NAME + "</b><br>" + 
-                                "Status: " + 
-                                feature.properties.STATUS + "<br>" + 
-                                "Name: " + 
-                                feature.properties.NAME + "<br>" + 
-                                "Operator: " + 
-                                feature.properties.OPERATOR + "<br>" + 
-                                "Section Length: " + 
-                                feature.properties.SECT_LENGTH);
-                        }
-                    });
+
+                var towerslayer = L.geoJson(response.responseJSON,
+                {onEachFeature: function(feature, layer) {
+                        layer.bindPopup("<b>Cell Tower Location: " + 
+                            feature.properties.GISMUNIC + "</b><br>" + 
+                            "Elevation (ft): " +
+                            feature.properties.ELEV_FT + "<br>" +
+                            "Tower Owner: " + 
+                            feature.properties.ENTITY_NAM);
+                    }
+
+                }).addTo(map);
+
+                railslayer = L.geoJson(rails_geojson,
+                {style: lineSymbology,
+                    onEachFeature: function(feature, layer) {
+                        layer.bindPopup("<b>Rail Owner Name: " + 
+                            feature.properties.NAME + "</b><br>" + 
+                            "Status: " + 
+                            feature.properties.STATUS + "<br>" + 
+                            "Name: " + 
+                            feature.properties.NAME + "<br>" + 
+                            "Operator: " + 
+                            feature.properties.OPERATOR + "<br>" + 
+                            "Section Length: " + 
+                            feature.properties.SECT_LENGTH);
+                    }
+
                 });
-        
-                $("#toggleRails").click(function() {
+
+                $("#toggleRails").click( function() {
                     if (railsVisible) {
                         railsVisible = false;
                         railslayer.removeFrom(map);
@@ -104,11 +102,12 @@
                         railsVisible = true;
                         railslayer.addTo(map);
                     }
+
                 });
-        
-                $("#toggleTowers").show();
-        
-                $("#toggleTowers").click(function() {
+
+
+                $("#toggleTowers").show()
+                $("#toggleTowers").click( function() {
                     if (towersVisible) {
                         towersVisible = false;
                         towerslayer.removeFrom(map);
@@ -116,10 +115,11 @@
                         towersVisible = true;
                         towerslayer.addTo(map);
                     }
-                });
+
+                })
+            });
             }
         </script>
-        
 
     </head>
     <body onload="initialize()">
