@@ -2,34 +2,46 @@
 <html>
 <head>
     <title>The DOC Fifty</title>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <style>
-        #map {
-            height: 1000px;
-            width: 1000px;
-            margin: auto;
-        }
-        html,
         body {
-            height: 100%;
+            font-family: Arial, sans-serif;
+            background-color: #00693e; /* Dartmouth Green */
             margin: 0;
             padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: #00693e; /* Dartmouth Green */
+            min-height: 100vh;
+            color: white;
         }
-        h1 {
+        #map {
+            height: 60vh;
+            width: 80%;
+            margin: 20px auto;
+        }
+        h1, h2, h3 {
             text-align: center;
+            margin: 10px;
         }
         #buttons {
-            padding: 10px;
-            background: #043d25;
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .toggle-button {
+            margin: 5px;
+            padding: 8px 20px;
+            background-color: #004d2c;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
         }
     </style>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
         var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ';
         var trailsVisible = true;
@@ -38,9 +50,12 @@
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
         });
+
         function lineSymbology(feature) {
             var length = feature.properties.SECT_LENGTH;
             var lineColor = "#a1d76a";
+            var lineWidth = 2;
+
             if (length > 20.0) {
                 lineColor = "#777777";
                 lineWidth = 4;
@@ -53,7 +68,7 @@
                 color: lineColor,
                 weight: lineWidth,
                 opacity: 1
-            }
+            };
         }
 
         function initialize() {
@@ -62,14 +77,17 @@
                 zoom: 10,
                 layers: [satellite]
             });
+
             var trailsResponse = $.ajax({
                 url: "The_DOC_Fifty_Trail.geojson",
                 dataType: "json"
             });
+
             var stationsResponse = $.ajax({
                 url: "The_DOC_Fifty_Support_Stations.geojson",
                 dataType: "json"
             });
+
             $.when(trailsResponse, stationsResponse).done(function(trailsData, stationsData) {
                 var trailslayer = L.geoJson(trailsData[0], {
                     onEachFeature: function(feature, layer) {
@@ -81,6 +99,7 @@
                             feature.properties.ENTITY_NAM);
                     }
                 }).addTo(map);
+
                 var stationslayer = L.geoJson(stationsData[0], {
                     style: lineSymbology,
                     onEachFeature: function(feature, layer) {
@@ -90,11 +109,10 @@
                             feature.properties.Food);
                     }
                 }).addTo(map);
-                // Show the buttons after data is loaded
+
                 $("#toggleTrails").show();
                 $("#toggleStations").show();
-                // Log to console
-                console.log("Data for both trails and stations were added correctly.");
+
                 $("#toggleTrails").click(function() {
                     if (trailsVisible) {
                         trailsVisible = false;
@@ -104,6 +122,7 @@
                         trailslayer.addTo(map);
                     }
                 });
+
                 $("#toggleStations").click(function() {
                     if (stationsVisible) {
                         stationsVisible = false;
@@ -119,14 +138,15 @@
 </head>
 
 <body onload="initialize()">
-    <h1>The DOC Fifty!</h1>
-    <h2>A 54 mile hike from Moosilauke Ravine Lodge back to Dartmouth College's campus.</h2>
-    <h3>By Daniel Xu (23X Hiker Coordinator)</h3>
+    <div>
+        <h1>The DOC Fifty!</h1>
+        <h2>A 54-mile hike from Moosilauke Ravine Lodge back to Dartmouth College's campus.</h2>
+        <h3>By Daniel Xu (23X Hiker Coordinator)</h3>
+    </div>
     <div id="map"></div>
-    <div id="button">
-        <!-- Initially hide the buttons -->
-        <button id="toggleTrails" hidden>Toggle the Trails Layer.</button>
-        <button id="toggleStations" hidden>Toggle the Stations Layer.</button>
+    <div id="buttons">
+        <button id="toggleTrails" class="toggle-button" hidden>Toggle Trails Layer</button>
+        <button id="toggleStations" class="toggle-button" hidden>Toggle Stations Layer</button>
     </div>
 </body>
 </html>
