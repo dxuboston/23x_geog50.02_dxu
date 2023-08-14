@@ -20,24 +20,32 @@
             height: 60vh;
             width: 80%;
             margin: 20px auto;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
         }
         h1, h2, h3 {
             text-align: center;
-            margin: 10px;
+            margin: 20px 0;
         }
         #buttons {
             display: flex;
             justify-content: center;
-            margin-top: 10px;
+            margin-top: 20px;
         }
         .toggle-button {
-            margin: 5px;
-            padding: 8px 20px;
+            margin: 10px;
+            padding: 10px 20px;
             background-color: #004d2c;
             border: none;
             color: white;
             cursor: pointer;
             border-radius: 4px;
+        }
+        .content {
+            max-width: 800px;
+            text-align: justify;
+            margin: 20px auto;
+            padding: 0 20px;
         }
     </style>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -50,26 +58,6 @@
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
         });
-
-        function lineSymbology(feature) {
-            var length = feature.properties.SECT_LENGTH;
-            var lineColor = "#a1d76a";
-            var lineWidth = 2;
-
-            if (length > 20.0) {
-                lineColor = "#777777";
-                lineWidth = 4;
-            }
-            if (length < 5) {
-                lineColor = "#e9a3c9";
-                lineWidth = 6;
-            }
-            return {
-                color: lineColor,
-                weight: lineWidth,
-                opacity: 1
-            };
-        }
 
         function initialize() {
             var map = L.map("map", {
@@ -90,6 +78,12 @@
 
             $.when(trailsResponse, stationsResponse).done(function(trailsData, stationsData) {
                 var trailslayer = L.geoJson(trailsData[0], {
+                    style: {
+                        color: "#006400", // Dark green color
+                        weight: 2,
+                        opacity: 1,
+                        dashArray: "5, 5" // Dashed line style
+                    },
                     onEachFeature: function(feature, layer) {
                         layer.bindPopup("<b>Name: " +
                             feature.properties.name + "</b><br>" +
@@ -105,7 +99,12 @@
                 }).addTo(map);
 
                 var stationslayer = L.geoJson(stationsData[0], {
-                    style: lineSymbology,
+                    style: {
+                        color: "#a1d76a", // Light green color
+                        weight: 2,
+                        opacity: 1,
+                        dashArray: "solid" // Solid line style
+                    },
                     onEachFeature: function(feature, layer) {
                         layer.bindPopup("<b>Station Name: " +
                             feature.properties.Name + "</b><br>" +
@@ -151,6 +150,17 @@
     <div id="buttons">
         <button id="toggleTrails" class="toggle-button" hidden>Toggle Trails Layer</button>
         <button id="toggleStations" class="toggle-button" hidden>Toggle Stations Layer</button>
+    </div>
+    <div class="content">
+        <p>
+            The Fifty is a Dartmouth College tradition during which students across class years hike ~56 miles from Moosilauke Ravine Lodge all the way back to campus. Barring the first short leg of the hike, the majority of the hike (~50 miles) occurs on the section of the Appalachian Trail that the Dartmouth Outing Club maintains. This tradition occurs twice a year, once during Fall Term and another during Summer Term.
+        </p>
+        <p>
+            Despite its title, the intention of the Fifty is not to hike 50 miles. If you pushed yourself and had fun, then you have embodied the spirit of the Fifty. This event brings together people across Dartmouth's campus to celebrate the outdoors and each other. It is truly a special thing to watch hikers charge through the "Tunnel of Love" to slap the DOC sign outside of Robinson Hall, officially marking the end of the Fifty, with complete strangers giving their peers hugs along the way to celebrate their great achievement.
+        </p>
+        <p>
+            During the 23X Fifty that occurred from 7/14/2023 - 7/15/2023, there were nine teams, of which eight finished. Considering the staggeringly poor trail conditions, this was a miracle. Some hikers hike it just to say that they did, others hike it to commemorate their Abenaki heritage. Regardless, the different values assigned to this tradition make it so much more than a really long walk in the woods.
+        </p>
     </div>
 </body>
 </html>
