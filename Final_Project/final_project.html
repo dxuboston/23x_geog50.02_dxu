@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html>
-
 <head>
     <title>The DOC Fifty</title>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
@@ -12,7 +11,6 @@
             width: 1000px;
             margin: auto;
         }
-
         html,
         body {
             height: 100%;
@@ -23,31 +21,25 @@
             align-items: center;
             justify-content: center;
         }
-
         h1 {
             text-align: center;
         }
-
         #buttons {
             padding: 10px;
             background: #00693e;
         }
     </style>
-
     <script>
         var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ';
         var trailsVisible = true;
         var stationsVisible = true;
-
         var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, {
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
         });
-
         function lineSymbology(feature) {
             var length = feature.properties.SECT_LENGTH;
             var lineColor = "#a1d76a";
-
             if (length > 20.0) {
                 lineColor = "#777777";
                 lineWidth = 4;
@@ -56,7 +48,6 @@
                 lineColor = "#e9a3c9";
                 lineWidth = 6;
             }
-
             return {
                 color: lineColor,
                 weight: lineWidth,
@@ -66,21 +57,18 @@
 
         function initialize() {
             var map = L.map("map", {
-                center: [43.9933, -71.8160], // Coordinates to Jacob's Brook Support Station
+                center: [43.9933, -71.8160], // Coordinates to Mousilake Ravine Lodge
                 zoom: 10,
                 layers: [satellite]
             });
-
             var trailsResponse = $.ajax({
                 url: "The_DOC_Fifty_Trail.geojson",
                 dataType: "json"
             });
-
             var stationsResponse = $.ajax({
                 url: "The_DOC_Fifty_Support_Stations.geojson",
                 dataType: "json"
             });
-
             $.when(trailsResponse, stationsResponse).done(function(trailsData, stationsData) {
                 var trailslayer = L.geoJson(trailsData[0], {
                     onEachFeature: function(feature, layer) {
@@ -92,7 +80,6 @@
                             feature.properties.ENTITY_NAM);
                     }
                 }).addTo(map);
-
                 var stationslayer = L.geoJson(stationsData[0], {
                     style: lineSymbology,
                     onEachFeature: function(feature, layer) {
@@ -102,14 +89,11 @@
                             feature.properties.Food);
                     }
                 }).addTo(map);
-
                 // Show the buttons after data is loaded
                 $("#toggleTrails").show();
                 $("#toggleStations").show();
-
                 // Log to console
                 console.log("Data for both trails and stations were added correctly.");
-
                 $("#toggleTrails").click(function() {
                     if (trailsVisible) {
                         trailsVisible = false;
@@ -119,7 +103,6 @@
                         trailslayer.addTo(map);
                     }
                 });
-
                 $("#toggleStations").click(function() {
                     if (stationsVisible) {
                         stationsVisible = false;
@@ -132,11 +115,10 @@
             });
         }
     </script>
-
 </head>
 
 <body onload="initialize()">
-    <h1>The DOC Fifty!</h1>
+    <h1>Cell Towers and Railroads Around Moosilauke Ravine Lodge</h1>
     <div id="map"></div>
     <div id="button">
         <!-- Initially hide the buttons -->
@@ -144,5 +126,4 @@
         <button id="toggleStations" hidden>Toggle the Stations Layer.</button>
     </div>
 </body>
-
 </html>
