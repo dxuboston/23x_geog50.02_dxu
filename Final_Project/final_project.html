@@ -91,12 +91,16 @@
             $.when(trailsResponse, stationsResponse).done(function(trailsData, stationsData) {
                 var trailslayer = L.geoJson(trailsData[0], {
                     onEachFeature: function(feature, layer) {
-                        layer.bindPopup("<b>Cell Tower Location: " +
-                            feature.properties.GISMUNIC + "</b><br>" +
-                            "Elevation (ft): " +
-                            feature.properties.ELEV_FT + "<br>" +
-                            "Tower Owner: " +
-                            feature.properties.ENTITY_NAM);
+                        layer.bindPopup("<b>Name: " +
+                            feature.properties.name + "</b><br>" +
+                            "Starting Point: " +
+                            feature.properties.start_poin + "<br>" +
+                            "Ending Point: " +
+                            feature.properties.end_point + "<br>" +
+                            "Elevation Gain (ft): " +
+                            feature.properties.elev_ft + "<br>" +
+                            "Mileage: " +
+                            feature.properties.dist_miles);
                     }
                 }).addTo(map);
 
