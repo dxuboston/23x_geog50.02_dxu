@@ -4,75 +4,37 @@
 <head>
     <title>The DOC Fifty</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #00693e;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 100vh;
-            color: white;
-        }
-
-        #map {
-            height: 60vh;
-            width: 80%;
-            margin: 20px auto;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            border-radius: 10px;
-        }
-
-        h1,
-        h2,
-        h3 {
-            text-align: center;
-            margin: 20px 0;
-        }
-
-        #buttons {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .toggle-button {
-            margin: 10px;
-            padding: 10px 20px;
-            background-color: #004d2c;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 4px;
-        }
-
-        .content {
-            max-width: 800px;
-            text-align: justify;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-    </style>
+    <link rel="stylesheet" href="final_project.css">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-        var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ';
+        var accessToken = 'YOUR_MAPBOX_ACCESS_TOKEN';
         var trailsVisible = true;
         var stationsVisible = true;
-        var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, {
+        
+        var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, {
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
+        });
+
+        var openStreetMapLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         });
 
         function initialize() {
             var map = L.map("map", {
                 center: [43.8657, -72.0370],
                 zoom: 10,
-                layers: [satellite]
+                layers: [satelliteLayer]
             });
+
+            var baseMaps = {
+                "Satellite": satelliteLayer,
+                "OpenStreetMap": openStreetMapLayer
+            };
+
+            L.control.layers(baseMaps).addTo(map);
 
             var trailsResponse = $.ajax({
                 url: "The_DOC_Fifty_Trail.geojson",
@@ -163,19 +125,17 @@
         <h3>By Daniel Xu (23X Hiker Coordinator)</h3>
     </div>
     <div id="map"></div>
-    <div id="reset-zoom">
-        <button id="homeButton" class="toggle-button">Reset Zoom</button>
-    </div>
     <div id="buttons">
         <button id="toggleTrails" class="toggle-button">Toggle Trails Layer</button>
         <button id="toggleStations" class="toggle-button">Toggle Stations Layer</button>
+        <button id="homeButton" class="toggle-button">Reset Zoom</button>
     </div>
     <div class="content">
         <p>
-            The Fifty is a Dartmouth College tradition during which students across class years hike ~56 miles from Moosilauke Ravine Lodge all the way back to campus...
+            The Fifty is a Dartmouth College tradition during which students across class years hike ~56 miles from Moosilauke Ravine Lodge all the way back to campus. Barring the first short leg of the hike, the majority of the hike (~50 miles) occurs on the section of the Appalachian Trail that the Dartmouth Outing Club maintains. This tradition occurs twice a year, once during Fall Term and another during Summer Term.
         </p>
         <p>
-            Despite its title, the intention of the Fifty is not to hike 50 miles...
+            Despite its title, the intention of the Fifty is not to hike 50 miles. If you pushed yourself and had fun, then you have embodied the spirit of the Fifty. This event brings together people across Dartmouth's campus to celebrate the outdoors and each other. It is truly a special thing to watch hikers charge through the "Tunnel of Love" to slap the DOC sign outside of Robinson Hall, officially marking the end of the Fifty, with complete strangers giving their peers the most joyous hug of their lives.
         </p>
     </div>
 </body>
