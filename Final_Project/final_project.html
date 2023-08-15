@@ -109,7 +109,11 @@
                         layer.bindPopup("<b>Station Name: " +
                             feature.properties.Name + "</b><br>" +
                             "Food: " +
-                            feature.properties.Food);
+                            feature.properties.Food + "</b><br>" +
+                            "Total Mileage Hiked: " + 
+                            feature.properties.Mileage + "</b><br>" +
+                            "Total Elevation Gain (ft): " + 
+                            feature.properties.Evel_gain);
                     }
                 }).addTo(map);
 
