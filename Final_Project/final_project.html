@@ -11,17 +11,30 @@
         var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ';
         var trailsVisible = true;
         var stationsVisible = true;
-        var satellite = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, {
+        
+        var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, {
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
+        });
+
+        var openStreetMapLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         });
 
         function initialize() {
             var map = L.map("map", {
                 center: [43.8657, -72.0370],
                 zoom: 10,
-                layers: [satellite]
+                layers: [satelliteLayer]
             });
+
+            var baseMaps = {
+                "Satellite": satelliteLayer,
+                "OpenStreetMap": openStreetMapLayer
+            };
+
+            L.control.layers(baseMaps).addTo(map);
 
             var trailsResponse = $.ajax({
                 url: "The_DOC_Fifty_Trail.geojson",
