@@ -33,7 +33,7 @@
                 "Satellite": satelliteLayer,
                 "OpenStreetMap": openStreetMapLayer
             };
-            
+
             L.control.layers(baseMaps).addTo(map);
 
             var trailsResponse = $.ajax({
@@ -65,9 +65,6 @@
                             feature.properties.elev_ft + "<br>" +
                             "Mileage: " +
                             feature.properties.dist_miles);
-                        layer.on('click', function() {
-                            map.fitBounds(layer.getBounds());
-                        });
                     }
                 }).addTo(map);
 
@@ -87,9 +84,6 @@
                             feature.properties.Mileage + "<br>" +
                             "Total Elevation Gain (ft): " + 
                             feature.properties.Elev_gain);
-                        layer.on('click', function() {
-                            map.fitBounds(layer.getBounds());
-                        });
                     }
                 }).addTo(map);
 
