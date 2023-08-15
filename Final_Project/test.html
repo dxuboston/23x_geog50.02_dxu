@@ -90,9 +90,7 @@
                             "Total Elevation Gain (ft): " + 
                             feature.properties.Elev_gain);
                         layer.on('click', function() {
-                            var bounds = layer.getBounds();
-                            var center = bounds.getCenter();
-                            map.setView(center, 14);
+                            map.setView(layer.getLatLng(), 14);
                         });
                     }
                 }).addTo(map);
