@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>The DOC Fifty</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #00693e; /* Dartmouth Green */
+            background-color: #00693e;
             margin: 0;
             padding: 0;
             display: flex;
@@ -16,6 +17,7 @@
             min-height: 100vh;
             color: white;
         }
+
         #map {
             height: 60vh;
             width: 80%;
@@ -23,15 +25,20 @@
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
             border-radius: 10px;
         }
-        h1, h2, h3 {
+
+        h1,
+        h2,
+        h3 {
             text-align: center;
             margin: 20px 0;
         }
+
         #buttons {
             display: flex;
             justify-content: center;
             margin-top: 20px;
         }
+
         .toggle-button {
             margin: 10px;
             padding: 10px 20px;
@@ -41,6 +48,7 @@
             cursor: pointer;
             border-radius: 4px;
         }
+
         .content {
             max-width: 800px;
             text-align: justify;
@@ -61,7 +69,7 @@
 
         function initialize() {
             var map = L.map("map", {
-                center: [43.8657, -72.0370], // Coordinates to Jacob's Brook 
+                center: [43.8657, -72.0370],
                 zoom: 10,
                 layers: [satellite]
             });
@@ -79,10 +87,10 @@
             $.when(trailsResponse, stationsResponse).done(function(trailsData, stationsData) {
                 var trailslayer = L.geoJson(trailsData[0], {
                     style: {
-                        color: "#FFFFFF", // white
+                        color: "#FFFFFF",
                         weight: 3,
                         opacity: 1,
-                        dashArray: "5, 5" // Dashed line style
+                        dashArray: "5, 5"
                     },
                     onEachFeature: function(feature, layer) {
                         layer.bindPopup("<b>Name: " +
@@ -100,18 +108,18 @@
 
                 var stationslayer = L.geoJson(stationsData[0], {
                     style: {
-                        color: "#a1d76a", // Light green color
+                        color: "#a1d76a",
                         weight: 2,
                         opacity: 1,
-                        dashArray: "solid" // Solid line style
+                        dashArray: "solid"
                     },
                     onEachFeature: function(feature, layer) {
                         layer.bindPopup("<b>Station Name: " +
                             feature.properties.Name + "</b><br>" +
                             "Food: " +
-                            feature.properties.Food + "</b><br>" +
+                            feature.properties.Food + "<br>" +
                             "Total Miles Hiked: " + 
-                            feature.properties.Mileage + "</b><br>" +
+                            feature.properties.Mileage + "<br>" +
                             "Total Elevation Gain (ft): " + 
                             feature.properties.Elev_gain);
                     }
@@ -139,6 +147,10 @@
                         stationslayer.addTo(map);
                     }
                 });
+
+                $("#homeButton").click(function() {
+                    map.setView([43.8657, -72.0370], 10);
+                });
             });
         }
     </script>
@@ -152,19 +164,18 @@
     </div>
     <div id="map"></div>
     <div id="buttons">
-        <button id="toggleTrails" class="toggle-button" hidden>Toggle Trails Layer</button>
-        <button id="toggleStations" class="toggle-button" hidden>Toggle Stations Layer</button>
+        <button id="toggleTrails" class="toggle-button">Toggle Trails Layer</button>
+        <button id="toggleStations" class="toggle-button">Toggle Stations Layer</button>
+        <button id="homeButton" class="toggle-button">Reset Zoom</button>
     </div>
     <div class="content">
         <p>
             The Fifty is a Dartmouth College tradition during which students across class years hike ~56 miles from Moosilauke Ravine Lodge all the way back to campus. Barring the first short leg of the hike, the majority of the hike (~50 miles) occurs on the section of the Appalachian Trail that the Dartmouth Outing Club maintains. This tradition occurs twice a year, once during Fall Term and another during Summer Term.
         </p>
         <p>
-            Despite its title, the intention of the Fifty is not to hike 50 miles. If you pushed yourself and had fun, then you have embodied the spirit of the Fifty. This event brings together people across Dartmouth's campus to celebrate the outdoors and each other. It is truly a special thing to watch hikers charge through the "Tunnel of Love" to slap the DOC sign outside of Robinson Hall, officially marking the end of the Fifty, with complete strangers giving their peers hugs along the way to celebrate their great achievement.
-        </p>
-        <p>
-            During the 23X Fifty that occurred from 7/14/2023 - 7/15/2023, there were nine teams, of which eight finished. Considering the staggeringly poor trail conditions, this was a miracle. Some hikers hike it just to say that they did, others hike it to commemorate their Abenaki heritage. Regardless, the different values assigned to this tradition make it so much more than a really long walk in the woods.
+            Despite its title, the intention of the Fifty is not to hike 50 miles. If you pushed yourself and had fun, then you have embodied the spirit of the Fifty. This event brings together people across Dartmouth's campus to celebrate the outdoors and each other. It is truly a special thing to watch hikers charge through the "Tunnel of Love" to slap the DOC sign outside of Robinson Hall, officially marking the end of the Fifty, with complete strangers giving their peers the most joyous hug of their lives.
         </p>
     </div>
 </body>
+
 </html>
