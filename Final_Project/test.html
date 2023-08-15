@@ -121,6 +121,18 @@
                 $("#homeButton").click(function() {
                     map.setView([43.8657, -72.0370], 10);
                 });
+
+                map.on('baselayerchange', function(event) {
+                    if (event.name === 'OpenStreetMap') {
+                        trailslayer.setStyle({
+                            color: "#006400"  // Dark Green color
+                        });
+                    } else {
+                        trailslayer.setStyle({
+                            color: "#FFFFFF"  // Reset to original color
+                        });
+                    }
+                });
             });
         }
     </script>
