@@ -3,12 +3,12 @@
 "name": "The_DOC_Fifty_Support_Stations",
 "crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
 "features": [
-{ "type": "Feature", "properties": { "Name": "Great Bear Cabin", "Food": "Sandwiches" }, "geometry": { "type": "Point", "coordinates": [ -71.87603475, 43.9985003 ] } },
-{ "type": "Feature", "properties": { "Name": "Moosilauke Ravine Lodge", "Food": "None" }, "geometry": { "type": "Point", "coordinates": [ -71.815957091268473, 43.99338205 ] } },
-{ "type": "Feature", "properties": { "Name": "Atwell Hill", "Food": "Burritos" }, "geometry": { "type": "Point", "coordinates": [ -71.9644663, 43.9157948 ] } },
-{ "type": "Feature", "properties": { "Name": "Jacob's Brook", "Food": "Veggie Soup & Grilled Cheese Sandwiches" }, "geometry": { "type": "Point", "coordinates": [ -72.0370726, 43.8657975 ] } },
-{ "type": "Feature", "properties": { "Name": "Dartmouth Skiway", "Food": "Breakfast Sandwiches" }, "geometry": { "type": "Point", "coordinates": [ -72.103123, 43.792658 ] } },
-{ "type": "Feature", "properties": { "Name": "Three Mile Road", "Food": "Annie's Mac & Cheese" }, "geometry": { "type": "Point", "coordinates": [ -72.1759367, 43.7179023 ] } },
-{ "type": "Feature", "properties": { "Name": "Robinson Hall", "Food": "None" }, "geometry": { "type": "Point", "coordinates": [ -72.289686090939682, 43.703052826581562 ] } }
+{ "type": "Feature", "properties": { "Name": "Great Bear Cabin", "Food": "Sandwiches", "Mileage": 6.82, "Elev_gain": 2451.0 }, "geometry": { "type": "Point", "coordinates": [ -71.87603475, 43.9985003 ] } },
+{ "type": "Feature", "properties": { "Name": "Moosilauke Ravine Lodge", "Food": "None", "Mileage": 0.0, "Elev_gain": 0.0 }, "geometry": { "type": "Point", "coordinates": [ -71.815957091268473, 43.99338205 ] } },
+{ "type": "Feature", "properties": { "Name": "Atwell Hill", "Food": "Burritos", "Mileage": 17.92, "Elev_gain": 4718.0 }, "geometry": { "type": "Point", "coordinates": [ -71.9644663, 43.9157948 ] } },
+{ "type": "Feature", "properties": { "Name": "Jacob's Brook", "Food": "Veggie Soup & Grilled Cheese Sandwiches", "Mileage": 26.92, "Elev_gain": 7015.0 }, "geometry": { "type": "Point", "coordinates": [ -72.0370726, 43.8657975 ] } },
+{ "type": "Feature", "properties": { "Name": "Dartmouth Skiway", "Food": "Breakfast Sandwiches", "Mileage": 35.72, "Elev_gain": 9199.0 }, "geometry": { "type": "Point", "coordinates": [ -72.103123, 43.792658 ] } },
+{ "type": "Feature", "properties": { "Name": "Three Mile Road", "Food": "Annie's Mac & Cheese", "Mileage": 45.22, "Elev_gain": 12337.0 }, "geometry": { "type": "Point", "coordinates": [ -72.1759367, 43.7179023 ] } },
+{ "type": "Feature", "properties": { "Name": "Robinson Hall", "Food": "None", "Mileage": 54.22, "Elev_gain": 13451.0 }, "geometry": { "type": "Point", "coordinates": [ -72.289686090939682, 43.703052826581562 ] } }
 ]
 }
