@@ -65,6 +65,11 @@
                             feature.properties.elev_ft + "<br>" +
                             "Mileage: " +
                             feature.properties.dist_miles);
+                        layer.on('click', function() {
+                            var bounds = layer.getBounds();
+                            var center = bounds.getCenter();
+                            map.setView(center, 14);
+                        });
                     }
                 }).addTo(map);
 
@@ -84,6 +89,9 @@
                             feature.properties.Mileage + "<br>" +
                             "Total Elevation Gain (ft): " + 
                             feature.properties.Elev_gain);
+                        layer.on('click', function() {
+                            map.setView(layer.getLatLng(), 14);
+                        });
                     }
                 }).addTo(map);
 
