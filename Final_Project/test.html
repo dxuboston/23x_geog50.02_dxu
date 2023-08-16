@@ -71,19 +71,6 @@
                             var bounds = layer.getBounds();
                             var center = bounds.getCenter();
                             map.setView(center, 12); // Adjusted zoom for lines (trails)
-                            layer.bindPopup("<b>Name: " +
-                                feature.properties.name + "</b><br>" +
-                                "Starting Point: " +
-                                feature.properties.start_poin + "<br>" +
-                                "Ending Point: " +
-                                feature.properties.end_point + "<br>" +
-                                "Elevation Gain (ft): " +
-                                feature.properties.elev_ft + "<br>" +
-                                "Mileage: " +
-                                feature.properties.dist_miles).openPopup();
-                        });
-                        layer.on('popupclose', function () {
-                            layer.setStyle(originalStyle);  // Reset style when popup is closed
                         });
                     }
                 }).addTo(map);
@@ -96,16 +83,16 @@
                         dashArray: "solid"
                     },
                     onEachFeature: function (feature, layer) {
+                        layer.bindPopup("<b>Station Name: " +
+                            feature.properties.Name + "</b><br>" +
+                            "Food: " +
+                            feature.properties.Food + "<br>" +
+                            "Total Miles Hiked: " + 
+                            feature.properties.Mileage + "<br>" +
+                            "Total Elevation Gain (ft): " + 
+                            feature.properties.Elev_gain);
                         layer.on('click', function () {
-                            layer.openPopup(); // Show the popup for stations when clicked
-                        });
-                        layer.on('popupclose', function () {
-                            // Reset view when popup is closed
-                            if (stationsVisible) {
-                                map.setView(layer.getLatLng(), 14);
-                            } else {
-                                map.setView([43.8657, -72.0370], 10);
-                            }
+                            map.setView(layer.getLatLng(), 14);
                         });
                     }
                 }).addTo(map);
