@@ -65,7 +65,7 @@
                             "Elevation Gain (ft): " +
                             feature.properties.elev_ft + "<br>" +
                             "Mileage: " +
-                            feature.properties.dist_miles);
+                            feature.properties.dist_miles, {maxHeight: $("#map").height() * 0.7});
                         layer.on('click', function (e) {
                             trailslayer.eachLayer(function (l) {
                                 l.setStyle({
@@ -125,7 +125,7 @@ galleryHtml += '</div>'; // Close the gallery div
                             feature.properties.Elev_gain + "<br>" +
                             galleryHtml;
 
-                        layer.bindPopup(popupContent);
+                        layer.bindPopup(popupContent, {maxHeight: $("#map").height() * 0.7});
 
                         layer.on('click', function () {
                             map.setView(layer.getLatLng(), 14);
