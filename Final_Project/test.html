@@ -130,16 +130,24 @@
                     }
                 });
 
-                $("#homeButton").click(function () {
+                $("#homeButton").click(function() {
     map.setView([43.8657, -72.0370], 10);
-    trailslayer.eachLayer(function (l) {
-        l.setStyle({
-            color: (map.hasLayer(satelliteLayer) ? "#006400" : "#FFFFFF")
+    
+    if (map.hasLayer(openStreetMapLayer)) { // check if OpenStreetMap is the current layer
+        trailslayer.setStyle({
+            color: "#006400" // Dark Green color
         });
-        l.closePopup();
+    } else {
+        trailslayer.setStyle({
+            color: "#FFFFFF" // White color
+        });
+    }
+
+    trailslayer.eachLayer(function(l) {
+        l.closePopup(); // Close popups when home button is clicked
     });
-    stationslayer.eachLayer(function (l) {
-        l.closePopup();
+    stationslayer.eachLayer(function(l) {
+        l.closePopup(); // Close station popups when home button is clicked
     });
 });
 
