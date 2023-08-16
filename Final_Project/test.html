@@ -108,12 +108,13 @@
                         dashArray: "solid"
                     },
                     onEachFeature: function (feature, layer) {
-                        var galleryHtml = '';
-                        for (var i = 1; i <= 5; i++) {
-                            if (feature.properties['IMG' + i]) {
-                                galleryHtml += '<img src="' + feature.properties['IMG' + i] + '" alt="Trail Image" class="popup-image">';
-                            }
-                        }
+                        var galleryHtml = '<div class="popup-gallery">'; // Start the gallery div
+for (var i = 1; i <= 5; i++) {
+    if (feature.properties['IMG' + i]) {
+        galleryHtml += '<img src="' + feature.properties['IMG' + i] + '" alt="Trail Image" class="popup-image">';
+    }
+}
+galleryHtml += '</div>'; // Close the gallery div
                         var popupContent = "<b>Station Name: " +
                             feature.properties.Name + "</b><br>" +
                             "Food: " +
