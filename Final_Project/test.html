@@ -97,11 +97,15 @@
                     },
                     onEachFeature: function (feature, layer) {
                         layer.on('click', function () {
-                            map.setView(layer.getLatLng(), 14); // Zoom level unchanged for points (stations)
                             layer.openPopup(); // Show the popup for stations when clicked
                         });
                         layer.on('popupclose', function () {
-                            map.setView([43.8657, -72.0370], 10); // Reset view when popup is closed
+                            // Reset view when popup is closed
+                            if (stationsVisible) {
+                                map.setView(layer.getLatLng(), 14);
+                            } else {
+                                map.setView([43.8657, -72.0370], 10);
+                            }
                         });
                     }
                 }).addTo(map);
@@ -133,9 +137,8 @@
                     map.setView([43.8657, -72.0370], 10);
                     trailslayer.eachLayer(function (l) {
                         l.setStyle({
-                            color: "#FFFFFF"  // Reset style when reset zoom button is clicked
+                            color: "#FFFFFF"  // Reset style when home button is clicked
                         });
-                        l.closePopup(); // Close popups when reset zoom button is clicked
                     });
                 });
 
