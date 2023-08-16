@@ -66,6 +66,14 @@
                             "Mileage: " +
                             feature.properties.dist_miles);
                         layer.on('click', function() {
+                            trailslayer.eachLayer(function(l) {
+                                l.setStyle({
+                                    color: "#FFFFFF"  // Reset all to original color
+                                });
+                            });
+                            layer.setStyle({
+                                color: "#FFFF00"  // Yellow highlight
+                            });
                             var bounds = layer.getBounds();
                             var center = bounds.getCenter();
                             map.setView(center, 14);
