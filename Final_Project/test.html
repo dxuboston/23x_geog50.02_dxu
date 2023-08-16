@@ -98,6 +98,10 @@
                     onEachFeature: function(feature, layer) {
                         layer.on('click', function() {
                             map.setView(layer.getLatLng(), 14); // Zoom level unchanged for points (stations)
+                            layer.openPopup(); // Show the popup for stations when clicked
+                        });
+                        layer.on('popupclose', function() {
+                            map.setView([43.8657, -72.0370], 10); // Reset view when popup is closed
                         });
                     }
                 }).addTo(map);
