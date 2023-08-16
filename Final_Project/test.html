@@ -55,15 +55,24 @@
                         dashArray: "5, 5"
                     },
                     onEachFeature: function (feature, layer) {
-                        var originalStyle = {
-                            color: "#FFFFFF",
-                            weight: 3,
-                            opacity: 1,
-                            dashArray: "5, 5"
-                        };
+                        layer.bindPopup("<b>Name: " +
+                            feature.properties.name + "</b><br>" +
+                            "Starting Point: " +
+                            feature.properties.start_poin + "<br>" +
+                            "Ending Point: " +
+                            feature.properties.end_point + "<br>" +
+                            "Elevation Gain (ft): " +
+                            feature.properties.elev_ft + "<br>" +
+                            "Mileage: " +
+                            feature.properties.dist_miles);
                         layer.on('click', function (e) {
                             trailslayer.eachLayer(function (l) {
-                                l.setStyle(originalStyle);  // Reset all to original style
+                                l.setStyle({  // Reset all to original style
+                                    color: "#FFFFFF",
+                                    weight: 3,
+                                    opacity: 1,
+                                    dashArray: "5, 5"
+                                });
                             });
                             layer.setStyle({
                                 color: "#FFFF00"  // Yellow highlight
@@ -71,6 +80,7 @@
                             var bounds = layer.getBounds();
                             var center = bounds.getCenter();
                             map.setView(center, 12); // Adjusted zoom for lines (trails)
+                            e.target.openPopup(); // Open the popup when trail is clicked
                         });
                     }
                 }).addTo(map);
@@ -126,6 +136,7 @@
                         l.setStyle({
                             color: "#FFFFFF"  // Reset style when home button is clicked
                         });
+                        l.closePopup(); // Close popups when home button is clicked
                     });
                 });
 
