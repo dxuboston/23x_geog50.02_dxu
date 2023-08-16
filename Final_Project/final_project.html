@@ -115,7 +115,8 @@
                             "Total Miles Hiked: " +
                             feature.properties.Mileage + "<br>" +
                             "Total Elevation Gain (ft): " +
-                            feature.properties.Elev_gain);
+                            feature.properties.Elev_gain + "<br>" +
+                            '<img src="' + feature.properties.IMG1 + '" alt="Trail Image">');
                         layer.on('click', function () {
                             map.setView(layer.getLatLng(), 14);
                         });
