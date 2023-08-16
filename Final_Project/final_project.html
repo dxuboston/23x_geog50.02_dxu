@@ -11,7 +11,7 @@
         var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ';
         var trailsVisible = true;
         var stationsVisible = true;
-        
+
         var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, {
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
@@ -46,7 +46,7 @@
                 dataType: "json"
             });
 
-            $.when(trailsResponse, stationsResponse).done(function(trailsData, stationsData) {
+            $.when(trailsResponse, stationsResponse).done(function (trailsData, stationsData) {
                 var trailslayer = L.geoJson(trailsData[0], {
                     style: {
                         color: "#FFFFFF",
@@ -54,7 +54,7 @@
                         opacity: 1,
                         dashArray: "5, 5"
                     },
-                    onEachFeature: function(feature, layer) {
+                    onEachFeature: function (feature, layer) {
                         layer.bindPopup("<b>Name: " +
                             feature.properties.name + "</b><br>" +
                             "Starting Point: " +
@@ -65,10 +65,22 @@
                             feature.properties.elev_ft + "<br>" +
                             "Mileage: " +
                             feature.properties.dist_miles);
-                        layer.on('click', function() {
+                        layer.on('click', function (e) {
+                            trailslayer.eachLayer(function (l) {
+                                l.setStyle({  // Reset all to original style
+                                    color: "#FFFFFF",
+                                    weight: 3,
+                                    opacity: 1,
+                                    dashArray: "5, 5"
+                                });
+                            });
+                            layer.setStyle({
+                                color: "#FFFF00"  // Yellow highlight
+                            });
                             var bounds = layer.getBounds();
                             var center = bounds.getCenter();
-                            map.setView(center, 14);
+                            map.setView(center, 12); // Adjusted zoom for lines (trails)
+                            e.target.openPopup(); // Open the popup when trail is clicked
                         });
                     }
                 }).addTo(map);
@@ -80,7 +92,7 @@
                         opacity: 1,
                         dashArray: "solid"
                     },
-                    onEachFeature: function(feature, layer) {
+                    onEachFeature: function (feature, layer) {
                         layer.bindPopup("<b>Station Name: " +
                             feature.properties.Name + "</b><br>" +
                             "Food: " +
@@ -89,7 +101,7 @@
                             feature.properties.Mileage + "<br>" +
                             "Total Elevation Gain (ft): " + 
                             feature.properties.Elev_gain);
-                        layer.on('click', function() {
+                        layer.on('click', function () {
                             map.setView(layer.getLatLng(), 14);
                         });
                     }
@@ -98,7 +110,7 @@
                 $("#toggleTrails").show();
                 $("#toggleStations").show();
 
-                $("#toggleTrails").click(function() {
+                $("#toggleTrails").click(function () {
                     if (trailsVisible) {
                         trailsVisible = false;
                         trailslayer.removeFrom(map);
@@ -108,7 +120,7 @@
                     }
                 });
 
-                $("#toggleStations").click(function() {
+                $("#toggleStations").click(function () {
                     if (stationsVisible) {
                         stationsVisible = false;
                         stationslayer.removeFrom(map);
@@ -118,11 +130,20 @@
                     }
                 });
 
-                $("#homeButton").click(function() {
-                    map.setView([43.8657, -72.0370], 10);
+                $("#homeButton").click(function () {
+                map.setView([43.8657, -72.0370], 10);
+                trailslayer.eachLayer(function (l) {
+                    l.setStyle({
+                        color: "#FFFFFF"  // Reset style when home button is clicked
+                    });
+                    l.closePopup(); // Close popups when home button is clicked
                 });
+                stationslayer.eachLayer(function (l) {
+                    l.closePopup(); // Close station popups when home button is clicked
+                });
+            });
 
-                map.on('baselayerchange', function(event) {
+                map.on('baselayerchange', function (event) {
                     if (event.name === 'OpenStreetMap') {
                         trailslayer.setStyle({
                             color: "#006400"  // Dark Green color
