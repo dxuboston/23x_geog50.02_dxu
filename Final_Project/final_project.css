@@ -48,7 +48,7 @@ h1, h2, h3 {
 }
 
 .popup-image {
-    max-width: 100px; /* Adjust this value to your preference */
+    max-width: 200px; 
     height: auto;
     display: block;
     margin: 10px auto;
