@@ -61,7 +61,7 @@
                             opacity: 1,
                             dashArray: "5, 5"
                         };
-                        layer.on('click', function() {
+                        layer.on('click', function(e) {
                             trailslayer.eachLayer(function(l) {
                                 l.setStyle(originalStyle);  // Reset all to original style
                             });
@@ -71,6 +71,16 @@
                             var bounds = layer.getBounds();
                             var center = bounds.getCenter();
                             map.setView(center, 12); // Adjusted zoom for lines (trails)
+                            layer.bindPopup("<b>Name: " +
+                                feature.properties.name + "</b><br>" +
+                                "Starting Point: " +
+                                feature.properties.start_poin + "<br>" +
+                                "Ending Point: " +
+                                feature.properties.end_point + "<br>" +
+                                "Elevation Gain (ft): " +
+                                feature.properties.elev_ft + "<br>" +
+                                "Mileage: " +
+                                feature.properties.dist_miles).openPopup();
                         });
                         layer.on('popupclose', function() {
                             layer.setStyle(originalStyle);  // Reset style when popup is closed
