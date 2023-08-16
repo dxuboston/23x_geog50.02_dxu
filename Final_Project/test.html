@@ -80,7 +80,7 @@
                             });
                             var bounds = layer.getBounds();
                             var center = bounds.getCenter();
-                            map.setView(center, 14);
+                            map.setView(center, 12); // Adjusted zoom for lines (trails)
                         });
                         layer.on('popupclose', function() {
                             layer.setStyle(originalStyle);  // Reset style when popup is closed
@@ -105,7 +105,7 @@
                             "Total Elevation Gain (ft): " + 
                             feature.properties.Elev_gain);
                         layer.on('click', function() {
-                            map.setView(layer.getLatLng(), 14);
+                            map.setView(layer.getLatLng(), 14); // Zoom level unchanged for points (stations)
                         });
                     }
                 }).addTo(map);
@@ -135,6 +135,11 @@
 
                 $("#homeButton").click(function() {
                     map.setView([43.8657, -72.0370], 10);
+                    trailslayer.eachLayer(function(l) {
+                        l.setStyle({
+                            color: "#FFFFFF"  // Reset style when reset zoom button is clicked
+                        });
+                    });
                 });
 
                 map.on('baselayerchange', function(event) {
