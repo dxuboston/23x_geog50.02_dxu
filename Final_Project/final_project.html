@@ -116,7 +116,7 @@
                             feature.properties.Mileage + "<br>" +
                             "Total Elevation Gain (ft): " +
                             feature.properties.Elev_gain + "<br>" +
-                            '<img src="' + feature.properties.IMG1 + '" alt="Trail Image">');
+                            '<img src="' + feature.properties.IMG1 + '" alt="Trail Image" class="popup-image">');
                         layer.on('click', function () {
                             map.setView(layer.getLatLng(), 14);
                         });
