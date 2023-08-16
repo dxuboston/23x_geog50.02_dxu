@@ -11,7 +11,7 @@
         var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ';
         var trailsVisible = true;
         var stationsVisible = true;
-        
+
         var satelliteLayer = L.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/{z}/{x}/{y}?access_token=' + accessToken, {
             maxZoom: 19,
             attribution: '&copy; <a href="https://www.mapbox.com/">Mapbox</a>'
@@ -46,7 +46,7 @@
                 dataType: "json"
             });
 
-            $.when(trailsResponse, stationsResponse).done(function(trailsData, stationsData) {
+            $.when(trailsResponse, stationsResponse).done(function (trailsData, stationsData) {
                 var trailslayer = L.geoJson(trailsData[0], {
                     style: {
                         color: "#FFFFFF",
@@ -54,15 +54,15 @@
                         opacity: 1,
                         dashArray: "5, 5"
                     },
-                    onEachFeature: function(feature, layer) {
+                    onEachFeature: function (feature, layer) {
                         var originalStyle = {
                             color: "#FFFFFF",
                             weight: 3,
                             opacity: 1,
                             dashArray: "5, 5"
                         };
-                        layer.on('click', function(e) {
-                            trailslayer.eachLayer(function(l) {
+                        layer.on('click', function (e) {
+                            trailslayer.eachLayer(function (l) {
                                 l.setStyle(originalStyle);  // Reset all to original style
                             });
                             layer.setStyle({
@@ -82,7 +82,7 @@
                                 "Mileage: " +
                                 feature.properties.dist_miles).openPopup();
                         });
-                        layer.on('popupclose', function() {
+                        layer.on('popupclose', function () {
                             layer.setStyle(originalStyle);  // Reset style when popup is closed
                         });
                     }
@@ -95,12 +95,12 @@
                         opacity: 1,
                         dashArray: "solid"
                     },
-                    onEachFeature: function(feature, layer) {
-                        layer.on('click', function() {
+                    onEachFeature: function (feature, layer) {
+                        layer.on('click', function () {
                             map.setView(layer.getLatLng(), 14); // Zoom level unchanged for points (stations)
                             layer.openPopup(); // Show the popup for stations when clicked
                         });
-                        layer.on('popupclose', function() {
+                        layer.on('popupclose', function () {
                             map.setView([43.8657, -72.0370], 10); // Reset view when popup is closed
                         });
                     }
@@ -109,7 +109,7 @@
                 $("#toggleTrails").show();
                 $("#toggleStations").show();
 
-                $("#toggleTrails").click(function() {
+                $("#toggleTrails").click(function () {
                     if (trailsVisible) {
                         trailsVisible = false;
                         trailslayer.removeFrom(map);
@@ -119,7 +119,7 @@
                     }
                 });
 
-                $("#toggleStations").click(function() {
+                $("#toggleStations").click(function () {
                     if (stationsVisible) {
                         stationsVisible = false;
                         stationslayer.removeFrom(map);
@@ -129,22 +129,17 @@
                     }
                 });
 
-                $("#homeButton").click(function() {
+                $("#homeButton").click(function () {
                     map.setView([43.8657, -72.0370], 10);
-                    trailslayer.eachLayer(function(l) {
+                    trailslayer.eachLayer(function (l) {
                         l.setStyle({
                             color: "#FFFFFF"  // Reset style when reset zoom button is clicked
                         });
+                        l.closePopup(); // Close popups when reset zoom button is clicked
                     });
-
-                    // Close the active popup if it's open
-                    var activePopup = map._popup;
-                    if (activePopup) {
-                        activePopup._close();
-                    }
                 });
 
-                map.on('baselayerchange', function(event) {
+                map.on('baselayerchange', function (event) {
                     if (event.name === 'OpenStreetMap') {
                         trailslayer.setStyle({
                             color: "#006400"  // Dark Green color
