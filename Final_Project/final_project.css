@@ -62,8 +62,3 @@ h1, h2, h3 {
     display: block;
     margin: 10px auto;
 }
-
-.leaflet-popup-content {
-    max-height: 80%;
-    overflow-y: auto;
-}
