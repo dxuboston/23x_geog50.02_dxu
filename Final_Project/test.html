@@ -127,7 +127,7 @@ galleryHtml += '</div>'; // Close the gallery div
                             galleryHtml + "<br>" +
                             feature.properties.credits;
 
-                        layer.bindPopup(popupContent, {maxWidth : 500});
+                        layer.bindPopup(popupContent, {maxWidth : auto});
 
                         layer.on('click', function () {
                             map.setView(layer.getLatLng(), 14);
