@@ -54,11 +54,6 @@ h1, h2, h3 {
     margin: 10px auto;
 }
 
-.popup-image {
-    max-width: 100%;
-    height: auto;
-}
-
 .popup-content {
     max-height: 300px; /* Adjust the maximum height as needed */
     overflow-y: auto;
