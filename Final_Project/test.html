@@ -131,14 +131,17 @@
                 });
 
                 $("#homeButton").click(function () {
-                    map.setView([43.8657, -72.0370], 10);
-                    trailslayer.eachLayer(function (l) {
-                        l.setStyle({
-                            color: "#FFFFFF"  // Reset style when home button is clicked
-                        });
-                        l.closePopup(); // Close popups when home button is clicked
+                map.setView([43.8657, -72.0370], 10);
+                trailslayer.eachLayer(function (l) {
+                    l.setStyle({
+                        color: "#FFFFFF"  // Reset style when home button is clicked
                     });
+                    l.closePopup(); // Close popups when home button is clicked
                 });
+                stationslayer.eachLayer(function (l) {
+                    l.closePopup(); // Close station popups when home button is clicked
+                });
+            });
 
                 map.on('baselayerchange', function (event) {
                     if (event.name === 'OpenStreetMap') {
