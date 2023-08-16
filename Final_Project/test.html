@@ -61,16 +61,6 @@
                             opacity: 1,
                             dashArray: "5, 5"
                         };
-                        layer.bindPopup("<b>Name: " +
-                            feature.properties.name + "</b><br>" +
-                            "Starting Point: " +
-                            feature.properties.start_poin + "<br>" +
-                            "Ending Point: " +
-                            feature.properties.end_point + "<br>" +
-                            "Elevation Gain (ft): " +
-                            feature.properties.elev_ft + "<br>" +
-                            "Mileage: " +
-                            feature.properties.dist_miles);
                         layer.on('click', function() {
                             trailslayer.eachLayer(function(l) {
                                 l.setStyle(originalStyle);  // Reset all to original style
@@ -96,14 +86,6 @@
                         dashArray: "solid"
                     },
                     onEachFeature: function(feature, layer) {
-                        layer.bindPopup("<b>Station Name: " +
-                            feature.properties.Name + "</b><br>" +
-                            "Food: " +
-                            feature.properties.Food + "<br>" +
-                            "Total Miles Hiked: " + 
-                            feature.properties.Mileage + "<br>" +
-                            "Total Elevation Gain (ft): " + 
-                            feature.properties.Elev_gain);
                         layer.on('click', function() {
                             map.setView(layer.getLatLng(), 14); // Zoom level unchanged for points (stations)
                         });
@@ -140,6 +122,12 @@
                             color: "#FFFFFF"  // Reset style when reset zoom button is clicked
                         });
                     });
+
+                    // Close the active popup if it's open
+                    var activePopup = map._popup;
+                    if (activePopup) {
+                        activePopup._close();
+                    }
                 });
 
                 map.on('baselayerchange', function(event) {
