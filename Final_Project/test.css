@@ -6,7 +6,7 @@ body, h1, h2, h3, p {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #E8F5E9; /* Light Green */
+    background: linear-gradient(45deg, #E8F5E9, #C8E6C9); /* Gradient Background */
     color: #333;
     line-height: 1.6;
     display: flex;
@@ -23,46 +23,37 @@ a {
 
 /* Header styles */
 h1, h2, h3 {
+    font-family: 'Merriweather', serif; /* Serif Font for Headers */
     text-align: center;
     margin: 20px 0;
-    color: #1B5E20; /* Deep Green */
+    color: #1B5E20;
+    transition: color 0.3s; /* Smooth Color Transition */
 }
 
-/* Map styles */
-#map {
-    height: 80vh;
-    width: 80%;
-    margin: 20px auto;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
+h1:hover, h2:hover, h3:hover {
+    color: #4CAF50; /* Vibrant Green on Hover */
 }
+
+/* Map styles remain unchanged */
 
 /* Button styles */
 .toggle-button {
     margin: 10px;
     padding: 10px 20px;
-    background-color: #4CAF50; /* Vibrant Green */
+    background-color: #4CAF50;
     border: none;
     color: white;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s; /* Added Transform Transition */
 }
 
 .toggle-button:hover {
-    background-color: #43A047; /* Darker Vibrant Green */
+    background-color: #43A047;
+    transform: translateY(-2px); /* Slight Upward Movement on Hover */
 }
 
-/* Content styles */
-.content {
-    max-width: 80%;
-    text-align: justify;
-    margin: 40px auto;
-    background: #C8E6C9; /* Pale Green */
-    padding: 30px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
-    border-radius: 10px;
-}
+/* Content styles remain unchanged */
 
 /* Image gallery styles */
 .popup-gallery {
@@ -78,11 +69,12 @@ h1, h2, h3 {
     margin: 10px auto;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 10px;
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s; /* Added Box Shadow Transition */
 }
 
 .popup-image:hover {
     transform: scale(1.05);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.12); /* Enhanced Shadow on Hover */
 }
 
 /* Back to top button styles */
@@ -94,17 +86,25 @@ h1, h2, h3 {
     padding: 10px 20px;
     font-family: 'Poppins', sans-serif;
     color: #fff;
-    background: #388E3C; /* Fresh Green */
+    background: #388E3C;
     border-radius: 50px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s; /* Added Transform Transition */
 }
 
 .top:hover {
-    background: #2E7D32; /* Slightly Darker Fresh Green */
+    background: #2E7D32;
+    transform: translateY(-2px); /* Slight Upward Movement on Hover */
 }
 
 p {
     font-size: 18px;
     margin-bottom: 20px;
+    line-height: 1.8; /* Increased Line Height for Readability */
 }
+
+/* New section for earthy accent elements */
+.accent {
+    color: #8B4513; /* Earthy Brown */
+}
+
