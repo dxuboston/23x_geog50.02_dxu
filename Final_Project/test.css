@@ -22,10 +22,15 @@ a {
 }
 
 /* Header styles */
-h1, h2, h3 {
+header {
+    background-color: #4E7E3E; /* Forest Green */
+    color: white;
+    padding: 20px 0;
     text-align: center;
-    margin: 20px 0;
-    color: #4E7E3E; /* Forest Green */
+}
+
+h1, h2, h3 {
+    margin: 0;
 }
 
 /* Map styles */
@@ -107,4 +112,12 @@ h1, h2, h3 {
 p {
     font-size: 18px;
     margin-bottom: 20px;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #4E7E3E; /* Forest Green */
+    color: white;
+    text-align: center;
+    padding: 10px 0;
 }
