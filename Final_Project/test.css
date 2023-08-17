@@ -23,7 +23,9 @@ a {
 
 /* Header styles */
 header {
-    background-color: #4E7E3E; /* Forest Green */
+    background-image: url('https://i.ibb.co/85DJ4Nv/3-EE73-C92-27-DD-4428-9951-1-B95931-FB0-D3.jpg');
+    background-size: cover;
+    background-position: center;
     color: white;
     padding: 20px 0;
     text-align: center;
@@ -120,4 +122,13 @@ p {
     color: white;
     text-align: center;
     padding: 10px 0;
+}
+
+/* Navbar styles */
+nav {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);  /* semi-transparent black */
+    position: absolute;
+    top: 0;
+    left: 0;
 }
