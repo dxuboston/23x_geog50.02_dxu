@@ -238,6 +238,15 @@ galleryHtml += '</div>'; // Close the gallery div
         <p>&copy; 2023 Daniel Xu. All rights reserved.</p>
     </footer>
     <a href="#" class="top">Back to Top &#8593;</a>
+    <script>
+        document.querySelector('.top').addEventListener('click', function(e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
 </body>
 
 </html>
