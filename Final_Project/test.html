@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
     <link rel="stylesheet" href="test.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
@@ -211,29 +212,44 @@ galleryHtml += '</div>'; // Close the gallery div
 </head>
 
 <body onload="initialize()">
-    <div>
-        <h1>The DOC Fifty!</h1>
-        <h2>A 54-mile hike from Moosilauke Ravine Lodge back to Dartmouth College's campus.</h2>
-        <h3>By Daniel Xu (23X Hiker Coordinator)</h3>
-    </div>
-    <div id="map"></div>
-    <div id="buttons">
-        <button id="toggleTrails" class="toggle-button">Toggle Trails Layer</button>
-        <button id="toggleStations" class="toggle-button">Toggle Stations Layer</button>
-        <button id="homeButton" class="toggle-button">Reset Zoom</button>
-    </div>
-    <div class="content">
-        <p>
-            The Fifty is a Dartmouth College tradition during which students across class years hike ~56 miles from Moosilauke Ravine Lodge all the way back to campus. Barring the first short leg of the hike, the majority of the hike (~50 miles) occurs on the section of the Appalachian Trail that the Dartmouth Outing Club maintains. This tradition occurs twice a year, once during Fall Term and another during Summer Term.
-        </p>
-        <p>
-            Despite its title, the intention of the Fifty is not to hike 50 miles. If you pushed yourself and had fun, then you have embodied the spirit of the Fifty. This event brings together people across Dartmouth's campus to celebrate the outdoors and each other. It is truly a special thing to watch hikers charge through the "Tunnel of Love" to slap the DOC sign outside of Robinson Hall, officially marking the end of the Fifty, with complete strangers giving their peers the most joyous hug of their lives.
-        </p>
-        <p>
-            During the 23X Fifty that occurred from 7/14/2023 - 7/15/2023, there were nine teams, of which eight finished. Considering the staggeringly poor trail conditions, this was a miracle. Some hikers hike it just to say that they did, others hike it to commemorate their Abenaki heritage. Regardless, the different values assigned to this tradition make it so much more than a really long walk in the woods. 
-        </p>
-    </div>
-    <a href="#" class="top">Back to Top &#8593;</a>
+    
+    <!-- HEADER -->
+    <header>
+        <div>
+            <h1>The DOC Fifty!</h1>
+            <h2>A 54-mile hike from Moosilauke Ravine Lodge back to Dartmouth College's campus.</h2>
+            <h3>By Daniel Xu (23X Hiker Coordinator)</h3>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <div id="map"></div>
+        
+        <div id="buttons">
+            <button id="toggleTrails" class="toggle-button">Toggle Trails Layer</button>
+            <button id="toggleStations" class="toggle-button">Toggle Stations Layer</button>
+            <button id="homeButton" class="toggle-button">Reset Zoom</button>
+        </div>
+
+        <div class="content">
+            <p>
+                The Fifty is a Dartmouth College tradition during which students across class years hike ~56 miles from Moosilauke Ravine Lodge all the way back to campus. Barring the first short leg of the hike, the majority of the hike (~50 miles) occurs on the section of the Appalachian Trail that the Dartmouth Outing Club maintains. This tradition occurs twice a year, once during Fall Term and another during Summer Term.
+            </p>
+            <p>
+                Despite its title, the intention of the Fifty is not to hike 50 miles. If you pushed yourself and had fun, then you have embodied the spirit of the Fifty. This event brings together people across Dartmouth's campus to celebrate the outdoors and each other. It is truly a special thing to watch hikers charge through the "Tunnel of Love" to slap the DOC sign outside of Robinson Hall, officially marking the end of the Fifty, with complete strangers giving their peers the most joyous hug of their lives.
+            </p>
+            <p>
+                During the 23X Fifty that occurred from 7/14/2023 - 7/15/2023, there were nine teams, of which eight finished. Considering the staggeringly poor trail conditions, this was a miracle. Some hikers hike it just to say that they did, others hike it to commemorate their Abenaki heritage. Regardless, the different values assigned to this tradition make it so much more than a really long walk in the woods. 
+            </p>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <a href="#" class="top">Back to Top &#8593;</a>
+    </footer>
+
 </body>
 
 </html>
