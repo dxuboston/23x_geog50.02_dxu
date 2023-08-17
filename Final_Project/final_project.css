@@ -41,7 +41,7 @@ h1, h2, h3 {
 }
 
 .content {
-    max-width: 800px;
+    max-width: 80%;
     text-align: justify;
     margin: 20px auto;
     padding: 0 20px;
