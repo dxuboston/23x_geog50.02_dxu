@@ -6,7 +6,7 @@ body, h1, h2, h3, p {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(45deg, #E8F5E9, #C8E6C9); /* Gradient Background */
+    background-color: #E8F5E9; /* Light Green */
     color: #333;
     line-height: 1.6;
     display: flex;
@@ -23,37 +23,46 @@ a {
 
 /* Header styles */
 h1, h2, h3 {
-    font-family: 'Merriweather', serif; /* Serif Font for Headers */
     text-align: center;
     margin: 20px 0;
-    color: #1B5E20;
-    transition: color 0.3s; /* Smooth Color Transition */
+    color: #1B5E20; /* Deep Green */
 }
 
-h1:hover, h2:hover, h3:hover {
-    color: #4CAF50; /* Vibrant Green on Hover */
+/* Map styles */
+#map {
+    height: 80vh;
+    width: 80%;
+    margin: 20px auto;
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
-
-/* Map styles remain unchanged */
 
 /* Button styles */
 .toggle-button {
     margin: 10px;
     padding: 10px 20px;
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* Vibrant Green */
     border: none;
     color: white;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s, transform 0.2s; /* Added Transform Transition */
+    transition: background-color 0.3s;
 }
 
 .toggle-button:hover {
-    background-color: #43A047;
-    transform: translateY(-2px); /* Slight Upward Movement on Hover */
+    background-color: #43A047; /* Darker Vibrant Green */
 }
 
-/* Content styles remain unchanged */
+/* Content styles */
+.content {
+    max-width: 80%;
+    text-align: justify;
+    margin: 40px auto;
+    background: #C8E6C9; /* Pale Green */
+    padding: 30px;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    border-radius: 10px;
+}
 
 /* Image gallery styles */
 .popup-gallery {
@@ -69,12 +78,11 @@ h1:hover, h2:hover, h3:hover {
     margin: 10px auto;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 10px;
-    transition: transform 0.3s, box-shadow 0.3s; /* Added Box Shadow Transition */
+    transition: transform 0.3s;
 }
 
 .popup-image:hover {
     transform: scale(1.05);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.12); /* Enhanced Shadow on Hover */
 }
 
 /* Back to top button styles */
@@ -86,25 +94,17 @@ h1:hover, h2:hover, h3:hover {
     padding: 10px 20px;
     font-family: 'Poppins', sans-serif;
     color: #fff;
-    background: #388E3C;
+    background: #388E3C; /* Fresh Green */
     border-radius: 50px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
-    transition: background-color 0.3s, transform 0.2s; /* Added Transform Transition */
+    transition: background-color 0.3s;
 }
 
 .top:hover {
-    background: #2E7D32;
-    transform: translateY(-2px); /* Slight Upward Movement on Hover */
+    background: #2E7D32; /* Slightly Darker Fresh Green */
 }
 
 p {
     font-size: 18px;
     margin-bottom: 20px;
-    line-height: 1.8; /* Increased Line Height for Readability */
 }
-
-/* New section for earthy accent elements */
-.accent {
-    color: #8B4513; /* Earthy Brown */
-}
-
