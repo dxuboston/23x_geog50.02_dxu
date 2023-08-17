@@ -5,7 +5,8 @@
     <title>The DOC Fifty</title>
     <link rel="icon" href="doc.png" type="image/png">
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <link rel="stylesheet" href="final_project.css">
+    <link rel="stylesheet" href="test.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
@@ -108,15 +109,27 @@
                         dashArray: "solid"
                     },
                     onEachFeature: function (feature, layer) {
-                        layer.bindPopup("<b>Station Name: " +
+                        var galleryHtml = '<div class="popup-gallery">'; // Start the gallery div
+for (var i = 1; i <= 5; i++) {
+    if (feature.properties['IMG' + i]) {
+        galleryHtml += '<img src="' + feature.properties['IMG' + i] + '" alt="Trail Image" class="popup-image">';
+    }
+}
+galleryHtml += '</div>'; // Close the gallery div
+                        var popupContent = "<b>Station Name: " +
                             feature.properties.Name + "</b><br>" +
                             "Food: " +
                             feature.properties.Food + "<br>" +
                             "Total Miles Hiked: " +
                             feature.properties.Mileage + "<br>" +
                             "Total Elevation Gain (ft): " +
-                            feature.properties.Elev_gain + "<br>" +
-                            '<img src="' + feature.properties.IMG1 + '" alt="Trail Image" class="popup-image">');
+                            feature.properties.Elev_gain + "<br>" + "<br>" +
+                            feature.properties.notes + "<br>" +
+                            galleryHtml + "<br>" +
+                            feature.properties.credits;
+
+                        layer.bindPopup(popupContent, {maxWidth: 400});
+
                         layer.on('click', function () {
                             map.setView(layer.getLatLng(), 14);
                         });
@@ -216,7 +229,11 @@
         <p>
             Despite its title, the intention of the Fifty is not to hike 50 miles. If you pushed yourself and had fun, then you have embodied the spirit of the Fifty. This event brings together people across Dartmouth's campus to celebrate the outdoors and each other. It is truly a special thing to watch hikers charge through the "Tunnel of Love" to slap the DOC sign outside of Robinson Hall, officially marking the end of the Fifty, with complete strangers giving their peers the most joyous hug of their lives.
         </p>
+        <p>
+            During the 23X Fifty that occurred from 7/14/2023 - 7/15/2023, there were nine teams, of which eight finished. Considering the staggeringly poor trail conditions, this was a miracle. Some hikers hike it just to say that they did, others hike it to commemorate their Abenaki heritage. Regardless, the different values assigned to this tradition make it so much more than a really long walk in the woods. 
+        </p>
     </div>
+    <a href="#" class="top">Back to Top &#8593;</a>
 </body>
 
 </html>
