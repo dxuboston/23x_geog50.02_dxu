@@ -6,7 +6,7 @@ body, h1, h2, h3, p {
 
 body {
     font-family: 'Poppins', sans-serif;
-    background-color: #E8F5E9; /* Light Green */
+    background-color: #EAE2D6; /* Tan */
     color: #333;
     line-height: 1.6;
     display: flex;
@@ -25,7 +25,7 @@ a {
 h1, h2, h3 {
     text-align: center;
     margin: 20px 0;
-    color: #1B5E20; /* Deep Green */
+    color: #4E7E3E; /* Forest Green */
 }
 
 /* Map styles */
@@ -41,7 +41,7 @@ h1, h2, h3 {
 .toggle-button {
     margin: 10px;
     padding: 10px 20px;
-    background-color: #4CAF50; /* Vibrant Green */
+    background-color: #A5783D; /* Light Brown */
     border: none;
     color: white;
     cursor: pointer;
@@ -50,7 +50,7 @@ h1, h2, h3 {
 }
 
 .toggle-button:hover {
-    background-color: #43A047; /* Darker Vibrant Green */
+    background-color: #8A6730; /* Darker Light Brown */
 }
 
 /* Content styles */
@@ -58,7 +58,7 @@ h1, h2, h3 {
     max-width: 80%;
     text-align: justify;
     margin: 40px auto;
-    background: #C8E6C9; /* Pale Green */
+    background: #C8BFA5; /* Light Tan */
     padding: 30px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
     border-radius: 10px;
@@ -94,14 +94,14 @@ h1, h2, h3 {
     padding: 10px 20px;
     font-family: 'Poppins', sans-serif;
     color: #fff;
-    background: #388E3C; /* Fresh Green */
+    background: #4E7E3E; /* Forest Green */
     border-radius: 50px;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
     transition: background-color 0.3s;
 }
 
 .top:hover {
-    background: #2E7D32; /* Slightly Darker Fresh Green */
+    background: #3B6026; /* Slightly Darker Forest Green */
 }
 
 p {
