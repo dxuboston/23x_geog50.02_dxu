@@ -23,6 +23,11 @@ a {
 
 /* Header styles */
 header {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-image: url('https://i.ibb.co/NSxPwhd/14-A3-A948-D8-E8-49-EB-A294-1-B249799-BBA9.jpg');
     background-size: cover;
     background-position: center;
@@ -131,4 +136,12 @@ nav {
     position: absolute;
     top: 0;
     left: 0;
+}
+
+.title-box {
+    background-color: rgba(0, 0, 0, 0.6);  /* semi-transparent black */
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 80%;
+    margin: 0 auto;
 }
