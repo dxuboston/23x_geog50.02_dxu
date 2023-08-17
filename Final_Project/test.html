@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>The DOC Fifty</title>
-    <link rel="icon" href="doc.png" type="image/png">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-    <link rel="stylesheet" href="test.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script>
-        var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ';
+ <head>
+  <title>
+   The DOC Fifty
+  </title>
+  <link href="doc.png" rel="icon" type="image/png"/>
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet"/>
+  <link href="test.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&amp;display=swap" rel="stylesheet"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js">
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js">
+  </script>
+  <script>
+   var accessToken = 'pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ';
         var trailsVisible = true;
         var stationsVisible = true;
 
@@ -208,53 +211,93 @@ galleryHtml += '</div>'; // Close the gallery div
                 });
             });
         }
-    </script>
-</head>
-
-<body onload="initialize()">
-    <header class="header"><div class="title-box">
-        <div class="header-content">
-            <div class="header-title">
-                <div class="title-box">
-                    <h1>The DOC Fifty!</h1>
-                </div>
-            </div>
-            <div class="header-description">
-                <h2>A 54-mile hike from Moosilauke Ravine Lodge back to Dartmouth College's campus.</h2>
-                <h3>By Daniel Xu (23X Hiker Coordinator)</h3>
-            </div>
-        </div>
-    </div></header>
-    <div id="map"></div>
-    <div id="buttons">
-        <button id="toggleTrails" class="toggle-button">Toggle Trails Layer</button>
-        <button id="toggleStations" class="toggle-button">Toggle Stations Layer</button>
-        <button id="homeButton" class="toggle-button">Reset Zoom</button>
+  </script>
+ </head>
+ <nav>
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a href="#home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#mapSection"&gt;Map&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#about"&gt;About the Fifty&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href="#footer"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+ </nav>
+ <body onload="initialize()">
+  <header class="header" id="home">
+   <div class="title-box" id="about">
+    <div class="header-content">
+     <div class="header-title">
+      <div class="title-box">
+       <h1>
+        The DOC Fifty!
+       </h1>
+      </div>
+     </div>
+     <div class="header-description">
+      <h2>
+       A 54-mile hike from Moosilauke Ravine Lodge back to Dartmouth College's campus.
+      </h2>
+      <h3>
+       By Daniel Xu (23X Hiker Coordinator)
+      </h3>
+     </div>
     </div>
-    <div class="content">
-        <p>
-            The Fifty is a Dartmouth College tradition during which students across class years hike ~56 miles from Moosilauke Ravine Lodge all the way back to campus. Barring the first short leg of the hike, the majority of the hike (~50 miles) occurs on the section of the Appalachian Trail that the Dartmouth Outing Club maintains. This tradition occurs twice a year, once during Fall Term and another during Summer Term.
-        </p>
-        <p>
-            Despite its title, the intention of the Fifty is not to hike 50 miles. If you pushed yourself and had fun, then you have embodied the spirit of the Fifty. This event brings together people across Dartmouth's campus to celebrate the outdoors and each other. It is truly a special thing to watch hikers charge through the "Tunnel of Love" to slap the DOC sign outside of Robinson Hall, officially marking the end of the Fifty, with complete strangers giving their peers the most joyous hug of their lives.
-        </p>
-        <p>
-            During the 23X Fifty that occurred from 7/14/2023 - 7/15/2023, there were nine teams, of which eight finished. Considering the staggeringly poor trail conditions, this was a miracle. Some hikers hike it just to say that they did, others hike it to commemorate their Abenaki heritage. Regardless, the different values assigned to this tradition make it so much more than a really long walk in the woods. 
-        </p>
-    </div>
-    <footer>
-        <p>&copy; 2023 Daniel Xu. All rights reserved.</p>
-    </footer>
-    <a href="#" class="top">Back to Top &#8593;</a>
-    <script>
-        document.querySelector('.top').addEventListener('click', function(e) {
+   </div>
+  </header>
+  <div id="mapSection">
+  </div>
+  <div id="buttons">
+   <button class="toggle-button" id="toggleTrails">
+    Toggle Trails Layer
+   </button>
+   <button class="toggle-button" id="toggleStations">
+    Toggle Stations Layer
+   </button>
+   <button class="toggle-button" id="homeButton">
+    Reset Zoom
+   </button>
+  </div>
+  <div class="content">
+   <p>
+    The Fifty is a Dartmouth College tradition during which students across class years hike ~56 miles from Moosilauke Ravine Lodge all the way back to campus. Barring the first short leg of the hike, the majority of the hike (~50 miles) occurs on the section of the Appalachian Trail that the Dartmouth Outing Club maintains. This tradition occurs twice a year, once during Fall Term and another during Summer Term.
+   </p>
+   <p>
+    Despite its title, the intention of the Fifty is not to hike 50 miles. If you pushed yourself and had fun, then you have embodied the spirit of the Fifty. This event brings together people across Dartmouth's campus to celebrate the outdoors and each other. It is truly a special thing to watch hikers charge through the "Tunnel of Love" to slap the DOC sign outside of Robinson Hall, officially marking the end of the Fifty, with complete strangers giving their peers the most joyous hug of their lives.
+   </p>
+   <p>
+    During the 23X Fifty that occurred from 7/14/2023 - 7/15/2023, there were nine teams, of which eight finished. Considering the staggeringly poor trail conditions, this was a miracle. Some hikers hike it just to say that they did, others hike it to commemorate their Abenaki heritage. Regardless, the different values assigned to this tradition make it so much more than a really long walk in the woods.
+   </p>
+  </div>
+  <footer id="footer">
+   <p>
+    © 2023 Daniel Xu. All rights reserved.
+   </p>
+  </footer>
+  <a class="top" href="#">
+   Back to Top ↑
+  </a>
+  <script>
+   document.querySelector('.top').addEventListener('click', function(e) {
             e.preventDefault();
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         });
-    </script>
-</body>
-
+  </script>
+  <script>
+   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+            behavior: 'smooth'
+        });
+    });
+});
+  </script>
+  <script>
+   $(document).ready(function() {
+    initialize();
+});
+  </script>
+ </body>
 </html>

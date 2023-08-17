@@ -1,3 +1,4 @@
+
 /* Global styles and resets */
 body, h1, h2, h3, p {
     margin: 0;
@@ -23,7 +24,7 @@ a {
 
 /* Header styles */
 header {
-    height: 100vh;
+    height: 80vh;
     width: 100%;
     display: flex;
     align-items: center;
@@ -38,14 +39,25 @@ header {
 
 h1, h2, h3 {
     margin: 0;
+    font-weight: 600;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+p {
+    font-size: 18px;
+    margin-bottom: 20px;
+    line-height: 1.8;
 }
 
 /* Map styles */
 #map {
-    height: 80vh;
-    width: 80%;
+    height: 85vh;
+    width: 85%;
     margin: 20px auto;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
     border-radius: 10px;
 }
 
@@ -58,43 +70,23 @@ h1, h2, h3 {
     color: white;
     cursor: pointer;
     border-radius: 4px;
-    transition: background-color 0.3s;
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .toggle-button:hover {
     background-color: #8A6730; /* Darker Light Brown */
+    transform: translateY(-3px);
 }
 
 /* Content styles */
 .content {
-    max-width: 80%;
+    max-width: 85%;
     text-align: justify;
     margin: 40px auto;
     background: #C8BFA5; /* Light Tan */
     padding: 30px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
     border-radius: 10px;
-}
-
-/* Image gallery styles */
-.popup-gallery {
-    height: 250px;
-    overflow-y: scroll;
-    margin: 20px 0;
-}
-
-.popup-image {
-    max-width: 100%; 
-    height: auto;
-    display: block;
-    margin: 10px auto;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
-    border-radius: 10px;
-    transition: transform 0.3s;
-}
-
-.popup-image:hover {
-    transform: scale(1.05);
 }
 
 /* Back to top button styles */
@@ -108,40 +100,23 @@ h1, h2, h3 {
     color: #fff;
     background: #4E7E3E; /* Forest Green */
     border-radius: 50px;
-    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.08);
-    transition: background-color 0.3s;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+    transition: background-color 0.3s, transform 0.2s;
 }
 
 .top:hover {
     background: #3B6026; /* Slightly Darker Forest Green */
-}
-
-p {
-    font-size: 18px;
-    margin-bottom: 20px;
+    transform: translateY(-3px);
 }
 
 /* Footer styles */
-.footer {
+footer {
     background-color: #4E7E3E; /* Forest Green */
     color: white;
     text-align: center;
-    padding: 10px 0;
-}
-
-/* Navbar styles */
-nav {
+    padding: 15px 0;
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.2);  /* semi-transparent black */
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: relative;
+    bottom: 0;
 }
 
-.title-box {
-    background-color: rgba(0, 0, 0, 0.6);  /* semi-transparent black */
-    padding: 30px;
-    border-radius: 10px;
-    max-width: 80%;
-    margin: 0 auto;
-}
