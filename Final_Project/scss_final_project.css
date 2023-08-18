@@ -249,7 +249,7 @@ footer {
   width: 6px;
   margin: 0 auto;
   padding-top: 50px;
-  background: #fff;
+  background: #00693E;
 }
 .timeline ul li::after {
   content: "";
@@ -275,7 +275,7 @@ footer {
 }
 .timeline ul li div time {
   position: absolute;
-  background: #f5af19;
+  background: #00693E;
   width: 80px;
   height: 30px;
   top: -15px;
