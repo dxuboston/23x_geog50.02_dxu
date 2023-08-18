@@ -350,10 +350,4 @@ footer {
   .timeline ul li:nth-of-type(even) > div {
     left: 45px;
   }
-}
-.horizontal-line {
-  width: 85%;
-  margin: 0 auto;
-  border: none;
-  border-top: 2px solid #000;
 }/*# sourceMappingURL=scss_final_project.css.map */
