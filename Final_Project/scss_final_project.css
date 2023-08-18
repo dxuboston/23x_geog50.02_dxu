@@ -350,4 +350,8 @@ footer {
   .timeline ul li:nth-of-type(even) > div {
     left: 45px;
   }
+}
+.space-buffer {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }/*# sourceMappingURL=scss_final_project.css.map */
