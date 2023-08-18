@@ -342,9 +342,20 @@ galleryHtml += '</div>'; // Close the gallery div
         const targetHeight = target.offsetHeight;
         const windowHeight = window.innerHeight;
         const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
+        const docHeight = document.documentElement.scrollHeight;
 
         // Calculate the centering offset
-        const centeredPosition = offsetTop - (windowHeight / 2) + (targetHeight / 2);
+        let centeredPosition = offsetTop - (windowHeight / 2) + (targetHeight / 2);
+
+        // If section is near the top of the document, scroll to the top of the section
+        if (centeredPosition < 0) {
+            centeredPosition = offsetTop;
+        }
+
+        // If section is near the bottom of the document, adjust to show the section at the bottom of the viewport
+        else if (centeredPosition + windowHeight > docHeight) {
+            centeredPosition = docHeight - windowHeight;
+        }
         
         window.scrollTo({
             top: centeredPosition,
