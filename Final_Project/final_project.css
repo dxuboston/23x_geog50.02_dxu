@@ -228,3 +228,8 @@ footer {
     display: block;   /* Display images as block elements */
     margin: 0 auto;   /* Center the images within the popup */
 }
+
+/* Adjust z-index of Leaflet controls to prevent overlap with the navigation bar */
+.leaflet-control {
+    z-index: 990 !important;  /* Set it below the navbar's z-index */
+}
