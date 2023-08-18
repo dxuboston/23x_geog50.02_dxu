@@ -255,7 +255,7 @@ footer {
 		width: 6px;
 		margin: 0 auto;
 		padding-top: 50px;
-		background: $dartmouth-green;
+		background: #046e24;
 		&::after {
 		  content: '';
 		  position: absolute;
@@ -265,7 +265,7 @@ footer {
 		  width: 20px;
 		  height: 20px;
 		  z-index: 2;
-		  background: #00601d;
+		  background: #046e24;
 		}
 		div {
 		  position: relative;
@@ -273,7 +273,7 @@ footer {
 		  width: 400px;
 		  padding: 20px;
 		  background: $primary-color;
-		  box-shadow: 4px 13px 30px 1px rgba(11, 91, 8, 0.2);
+		  box-shadow: 4px 13px 30px 1px rgba(4, 65, 2, 0.244);
 		  border-radius: 5px;
 		  display: flex;
 		  align-items: center;
