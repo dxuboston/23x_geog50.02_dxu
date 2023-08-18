@@ -135,27 +135,60 @@ footer {
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Add a slight shadow */
 }
 
-nav {
+/* Reset default margin and padding */
+body, ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
     background-color: #6194d5;
-    justify-content: space-between;
-    overflow: auto;
+    padding: 10px 20px;
   }
-  ul li {
-    position: relative;
-    margin: 0 20px;
+  
+  .logo-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .logo {
+    width: auto;
+    height: 40px;
+    margin-right: 10px;
+  }
+  
+  .navigationbar {
     list-style: none;
-    display: inline-block;
-    padding: 14px;
-    font-size: 17px;
+    display: flex;
   }
-  ul li a{
-  text-decoration: none; 
-  cursor: pointer;
-  color: rgb(255, 255, 255);
+  
+  .navigationbar li {
+    margin: 0 15px;
   }
-  ul li a:hover {
-     background-color: rgb(129, 123, 123);
+  
+  .navigationbar li a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: background-color 0.3s ease-in-out;
   }
+  
+  .navigationbar li a:hover {
+    background-color: rgb(129, 123, 123);
+  }
+  
+  /* Media query for smaller screens */
+  @media screen and (max-width: 768px) {
+    .navigationbar {
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  
+    .navigationbar li {
+      margin: 10px 0;
+    }
+  }
+  
