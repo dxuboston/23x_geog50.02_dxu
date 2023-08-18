@@ -90,19 +90,23 @@ p {
 
 /* Back to top button styles */
 .top {
-    position: sticky;
+    position: fixed; /* Change to "fixed" to make the element stay in place while scrolling */
     bottom: 20px;
-    right: 10px; /* Use "right" instead of "margin-right" to center the circle */
-    transform: translateX(50%); /* Center the circle horizontally */
+    right: 20px; /* Adjust the right position */
+    transform: translateX(0%); /* Remove the horizontal translation */
     padding: 10px;
     font-family: 'Poppins', sans-serif;
+    font-size: 16px; /* Increase the font size */
     color: #fff;
     background: #0c3000; /* Forest Green */
-    width: 50px; /* Set the width and height to create a circle */
+    width: 50px;
     height: 50px;
-    border-radius: 50%; /* Make the element a circle */
+    border-radius: 50%;
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
     transition: background-color 0.3s, transform 0.2s;
+    display: flex; /* Align the content horizontally and vertically */
+    justify-content: center;
+    align-items: center;
 }
 
 .top:hover {
