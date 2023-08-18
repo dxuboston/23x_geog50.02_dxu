@@ -249,7 +249,7 @@ footer {
   width: 6px;
   margin: 0 auto;
   padding-top: 50px;
-  background: rgba(23, 162, 65, 0.6980392157);
+  background: #001d09;
 }
 .timeline ul li::after {
   content: "";
