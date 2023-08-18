@@ -134,3 +134,28 @@ footer {
     margin: 0 auto; /* Center the box horizontally */
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Add a slight shadow */
 }
+
+nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    background-color: #6194d5;
+    justify-content: space-between;
+    overflow: auto;
+  }
+  ul li {
+    position: relative;
+    margin: 0 20px;
+    list-style: none;
+    display: inline-block;
+    padding: 14px;
+    font-size: 17px;
+  }
+  ul li a{
+  text-decoration: none; 
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  }
+  ul li a:hover {
+     background-color: rgb(129, 123, 123);
+  }
