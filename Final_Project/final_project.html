@@ -335,7 +335,17 @@ galleryHtml += '</div>'; // Close the gallery div
    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
+
+        const target = document.querySelector(this.getAttribute('href'));
+        const targetHeight = target.offsetHeight;
+        const windowHeight = window.innerHeight;
+        const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
+
+        // Calculate the centering offset
+        const centeredPosition = offsetTop - (windowHeight / 2) + (targetHeight / 2);
+        
+        window.scrollTo({
+            top: centeredPosition,
             behavior: 'smooth'
         });
     });
