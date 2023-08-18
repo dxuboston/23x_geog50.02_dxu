@@ -266,7 +266,7 @@ footer {
 .timeline ul li div {
   position: relative;
   bottom: 0;
-  width: 875px;
+  width: 500px;
   height: auto;
   padding: 10px;
   background: #00693E;
@@ -282,10 +282,11 @@ footer {
   height: 30px;
   top: -22px;
   border-radius: 5px;
+  padding: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: #eee;
 }
 .timeline ul li div div {
@@ -306,7 +307,7 @@ footer {
   left: 45px;
 }
 .timeline ul li:nth-of-type(even) > div {
-  left: -910px;
+  left: -539px;
 }
 
 .timeline ul li div {

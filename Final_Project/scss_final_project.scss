@@ -273,7 +273,7 @@ footer {
 		div {
 		  position: relative;
 		  bottom: 0;
-		  width: 875px;
+		  width: 500px;
       height: auto;
 		  padding: 10px;
 		  background: $primary-color;
@@ -288,10 +288,11 @@ footer {
 			height: 30px;
 			top: -22px;
 			border-radius: 5px;
+        padding: 10px;
 			display: flex;
 			justify-content: center;
 			align-items: center;
-			letter-spacing: 2px;
+			letter-spacing: 1px;
 			color: #eee
 		  }
 		  
@@ -320,7 +321,7 @@ footer {
 		
 		&:nth-of-type(even) {
 		  > div {
-			left: -910px;
+			left: -539px;
 		  }
 		}
 	  }
