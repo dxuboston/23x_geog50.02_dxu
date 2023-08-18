@@ -136,59 +136,87 @@ footer {
 }
 
 /* Reset default margin and padding */
-body, ul {
+* {
     margin: 0;
     padding: 0;
-  }
-  
-  nav {
+    box-sizing: border-box;
+}
+
+/* Apply default font and background */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+/* Sticky navigation bar */
+.navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: #6194d5;
     padding: 10px 20px;
-  }
-  
-  .logo-container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo-container {
     display: flex;
     align-items: center;
-  }
-  
-  .logo {
+}
+
+.logo {
     width: auto;
     height: 40px;
     margin-right: 10px;
-  }
-  
-  .navigationbar {
+}
+
+.navigationbar {
     list-style: none;
     display: flex;
-  }
-  
-  .navigationbar li {
-    margin: 0 15px;
-  }
-  
-  .navigationbar li a {
+    justify-content: center;
+    align-items: center;
+}
+
+.navigationbar li {
+    margin: 0 20px;
+}
+
+.navigationbar li a {
     text-decoration: none;
     color: white;
     font-size: 16px;
-    transition: background-color 0.3s ease-in-out;
-  }
-  
-  .navigationbar li a:hover {
-    background-color: rgb(129, 123, 123);
-  }
-  
-  /* Media query for smaller screens */
-  @media screen and (max-width: 768px) {
+    position: relative;
+}
+
+.navigationbar li a::before {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease-in-out;
+}
+
+.navigationbar li a:hover::before, .section.active li a::before {
+    width: 100%;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
     .navigationbar {
-      flex-direction: column;
-      align-items: flex-end;
+        flex-direction: column;
+        align-items: center;
     }
-  
+
     .navigationbar li {
-      margin: 10px 0;
+        margin: 10px 0;
     }
-  }
-  
+}
