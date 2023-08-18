@@ -53,6 +53,7 @@ p {
 
 /* Map styles */
 #map {
+    z-index: 990;
     height: 60vh;
     width: 85%;
     margin: 20px auto;
