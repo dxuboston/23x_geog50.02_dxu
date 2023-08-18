@@ -275,7 +275,7 @@ footer {
 }
 .timeline ul li div time {
   position: absolute;
-  background: #00693E;
+  background: #033714;
   width: 80px;
   height: 30px;
   top: -15px;
@@ -284,6 +284,7 @@ footer {
   justify-content: center;
   align-items: center;
   letter-spacing: 2px;
+  color: #eee;
 }
 .timeline ul li div div {
   height: 100px;
