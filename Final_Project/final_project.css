@@ -13,7 +13,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem 0;
+    padding: 0 0 2rem 0;
 }
 
 a {
@@ -215,4 +215,9 @@ footer {
     .navigationbar li {
         margin: 10px 0;
     }
+}
+.logo-text {
+    font-size: 16px;
+    color: white;
+    margin-left: 10px;
 }
