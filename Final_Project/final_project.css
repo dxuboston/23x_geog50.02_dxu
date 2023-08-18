@@ -53,7 +53,7 @@ p {
 
 /* Map styles */
 #map {
-    height: 85vh;
+    height: 60vh;
     width: 85%;
     margin: 20px auto;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
