@@ -212,6 +212,30 @@ galleryHtml += '</div>'; // Close the gallery div
             });
         }
   </script>
+    <script>
+        document.querySelector('.top').addEventListener('click', function(e) {
+                 e.preventDefault();
+                 window.scrollTo({
+                     top: 0,
+                     behavior: 'smooth'
+                 });
+             });
+       </script>
+       <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+         anchor.addEventListener('click', function (e) {
+             e.preventDefault();
+             document.querySelector(this.getAttribute('href')).scrollIntoView({
+                 behavior: 'smooth'
+             });
+         });
+     });
+       </script>
+       <script>
+        $(document).ready(function() {
+         initialize();
+     });
+       </script>
  </head>
  <body onload="initialize()">
     <nav class="navbar">
@@ -288,29 +312,5 @@ galleryHtml += '</div>'; // Close the gallery div
   <a class="top" href="#">
     ↑
   </a>
-  <script>
-   document.querySelector('.top').addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-  </script>
-  <script>
-   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
-        });
-    });
-});
-  </script>
-  <script>
-   $(document).ready(function() {
-    initialize();
-});
-  </script>
  </body>
 </html>
