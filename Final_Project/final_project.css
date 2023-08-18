@@ -231,5 +231,5 @@ footer {
 
 /* Adjust z-index of Leaflet controls to prevent overlap with the navigation bar */
 .leaflet-control {
-    z-index: 990 
+    z-index: 100
 }

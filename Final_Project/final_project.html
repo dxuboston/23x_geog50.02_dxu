@@ -153,10 +153,6 @@ galleryHtml += '</div>'; // Close the gallery div
                         });
                     }
                 }).addTo(map);
-                var controls = document.querySelectorAll('.leaflet-control');
-controls.forEach(function(control) {
-    control.style.zIndex = '990';
-});
 
                 $("#toggleTrails").show();
                 $("#toggleStations").show();
@@ -225,8 +221,8 @@ controls.forEach(function(control) {
         <ul class="navigationbar">
             <li><a href="#home">Home</a></li>
             <li><a href="#introduction">Introduction</a></li>
-            <li><a href="#about">About The Fifty</a></li>
             <li><a href="#map">Map</a></li>
+            <li><a href="#about">About The Fifty</a></li>
         </ul>
     </nav>
     <header class="header" id="home">
@@ -252,7 +248,6 @@ controls.forEach(function(control) {
             </div>
         </div>
     </header>    
-    <a id="introduction"></a>
   <div class="content">
     <h2><u>Introduction To The Fifty</u></h2>
         <p>
@@ -260,6 +255,7 @@ controls.forEach(function(control) {
             Barring the first short leg of the hike, the majority of the hike (~50 miles) occurs on the section of the Appalachian Trail that the Dartmouth Outing Club maintains. 
             This tradition occurs twice a year, once during Fall Term and another during Summer Term.
         </p>
+        <a id="introduction"></a>
         <p>
             The event is an endurance hike, but it is also a Dartmouth tradition that brings together people from every corner of campus to cheer on both friends, 
             peers, and strangers. 
