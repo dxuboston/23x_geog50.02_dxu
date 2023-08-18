@@ -126,7 +126,7 @@ footer {
 }
 
 .header-overlay {
-    background-color: rgba(0, 0, 0, 0.203); /* black with opacity */
+    background-color: rgba(0, 0, 0, 0.428); /* black with opacity */
     border-radius: 10px; /* Rounded corners */
     padding: 20px; /* Adjust as needed */
     width: 80%; /* Adjust the width as needed */
