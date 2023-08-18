@@ -390,3 +390,10 @@ footer {
 	  }
 	}
   }
+
+  .horizontal-line {
+	width: 85%;
+	margin: 0 auto; // Center the line
+	border: none; // Remove the default line border
+	border-top: 2px solid #000; // Set the line color and thickness
+  }
