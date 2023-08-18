@@ -147,7 +147,7 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #6194d5;
+    background-color: #4E7E3E;
     padding: 10px 20px;
     position: sticky;
     top: 0;
@@ -161,7 +161,7 @@ footer {
 
 .logo {
     width: auto;
-    height: 80px;
+    height: 50px;
     margin-right: 10px;
 }
 
