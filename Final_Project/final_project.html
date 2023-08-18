@@ -153,6 +153,10 @@ galleryHtml += '</div>'; // Close the gallery div
                         });
                     }
                 }).addTo(map);
+                var controls = document.querySelectorAll('.leaflet-control');
+controls.forEach(function(control) {
+    control.style.zIndex = '990';
+});
 
                 $("#toggleTrails").show();
                 $("#toggleStations").show();
