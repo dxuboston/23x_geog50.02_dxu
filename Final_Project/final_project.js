@@ -89,7 +89,7 @@ function initialize() {
           });
           var bounds = layer.getBounds();
           var center = bounds.getCenter();
-          map.setView(center, 12);
+          map.setView(center, 15);
         });
       }
     }).addTo(map);
@@ -137,7 +137,7 @@ function initialize() {
         });
 
         layer.on("click", function () {
-          map.setView(layer.getLatLng(), 14);
+          map.setView(layer.getLatLng(), 20);
         });
       }
     }).addTo(map);
