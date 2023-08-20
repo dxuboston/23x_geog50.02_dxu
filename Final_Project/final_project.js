@@ -90,7 +90,6 @@ function initialize() {
           var bounds = layer.getBounds();
           var center = bounds.getCenter();
           map.setView(center, 12);
-          e.target.openPopup();
         });
 
         layer.on("popupclose", function () {
@@ -148,7 +147,7 @@ function initialize() {
           feature.properties.credits;
 
           layer.on("click", function () {
-            document.getElementById("info-content").innerHTML = popupContent, { maxWidth: 400 }});
+            document.getElementById("info-content").innerHTML = popupContent});
 
         layer.on("click", function () {
           map.setView(layer.getLatLng(), 14);
