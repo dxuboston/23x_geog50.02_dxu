@@ -443,3 +443,21 @@ footer {
   margin-top: 60px;
   margin-bottom: 60px;
 }
+
+.cardwrapper { 
+	display: flex;
+	flex-direction: row;
+	height: 100%;
+	width: 100%;
+}
+
+.card { 
+	max-width: 85%;
+	text-align: justify;
+	margin: 40px auto;
+	background: #c8bfa5;
+	padding: 30px;
+	box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+	border-radius: 10px;
+	flex: 1;
+}
