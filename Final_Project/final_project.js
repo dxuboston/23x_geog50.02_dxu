@@ -1,5 +1,6 @@
 var accessToken =
   "pk.eyJ1IjoiZGFuaWVseHUwMiIsImEiOiJjbGt1MDkzNGgwMGV2M2xuMW84OTJqbDB3In0.NQElXto7ajMqUOraEvnFWQ";
+
 var trailsVisible = true;
 var stationsVisible = true;
 
@@ -20,6 +21,8 @@ var openStreetMapLayer = L.tileLayer(
       '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
   }
 );
+
+var highlightedTrailLayer = null;
 
 function initialize() {
   var map = L.map("map", {
@@ -58,7 +61,23 @@ function initialize() {
         dashArray: "5, 5"
       },
       onEachFeature: function (feature, layer) {
-        layer.on("click", function () {
+        layer.on("click", function (e) {
+          if (highlightedTrailLayer) {
+            highlightedTrailLayer.setStyle({
+              color: "#FFFFFF"
+            });
+          }
+
+          layer.setStyle({
+            color: "#FFFF00"
+          });
+
+          highlightedTrailLayer = layer;
+
+          var bounds = layer.getBounds();
+          var center = bounds.getCenter();
+          map.setView(center, 12);
+
           document.getElementById("info-content").innerHTML =
             "<b>Name: " +
             feature.properties.name +
@@ -75,22 +94,6 @@ function initialize() {
             "Mileage: " +
             feature.properties.dist_miles;
         });
-        layer.on("click", function (e) {
-          trailslayer.eachLayer(function (l) {
-            l.setStyle({
-              color: "#FFFFFF",
-              weight: 3,
-              opacity: 1,
-              dashArray: "5, 5"
-            });
-          });
-          layer.setStyle({
-            color: "#FFFF00"
-          });
-          var bounds = layer.getBounds();
-          var center = bounds.getCenter();
-          map.setView(center, 15);
-        });
       }
     }).addTo(map);
 
@@ -102,7 +105,7 @@ function initialize() {
         dashArray: "solid"
       },
       onEachFeature: function (feature, layer) {
-        var galleryHtml = '<div class="popup-gallery">'; // Start the gallery div
+        var galleryHtml = '<div class="popup-gallery">';
         for (var i = 1; i <= 5; i++) {
           if (feature.properties["IMG" + i]) {
             galleryHtml +=
@@ -111,7 +114,7 @@ function initialize() {
               '" alt="Trail Image" class="popup-image">';
           }
         }
-        galleryHtml += "</div>"; // Close the gallery div
+        galleryHtml += "</div>";
         var popupContent =
           "<b>Station Name: " +
           feature.properties.Name +
@@ -127,7 +130,7 @@ function initialize() {
           "<br>" +
           "<br>" +
           feature.properties.notes +
-          "<br>" + "<br>" +
+          "<br>" +
           galleryHtml +
           "<br>" +
           feature.properties.credits;
@@ -137,7 +140,7 @@ function initialize() {
         });
 
         layer.on("click", function () {
-          map.setView(layer.getLatLng(), 20);
+          map.setView(layer.getLatLng(), 14);
         });
       }
     }).addTo(map);
@@ -167,29 +170,33 @@ function initialize() {
 
     $("#homeButton").click(function () {
       map.setView([43.8657, -72.037], 10);
-      document.getElementById("info-content").innerHTML = 'Click on a trail or station to display details';
-      
+      document.getElementById("info-content").innerHTML =
+        "Click on a trail or station to display details";
 
-      if (map.hasLayer(openStreetMapLayer)) {
-        trailslayer.setStyle({
-          color: "#006400"
-        });
-      } else {
-        trailslayer.setStyle({
-          color: "#FFFFFF"
-        });
+      if (highlightedTrailLayer) {
+        if (map.hasLayer(openStreetMapLayer)) {
+          highlightedTrailLayer.setStyle({
+            color: "#FFFF00"
+          });
+        } else {
+          highlightedTrailLayer.setStyle({
+            color: "#FFFFFF"
+          });
+        }
       }
     });
 
     map.on("baselayerchange", function (event) {
-      if (event.name === "OpenStreetMap") {
-        trailslayer.setStyle({
-          color: "#006400"
-        });
-      } else {
-        trailslayer.setStyle({
-          color: "#FFFFFF"
-        });
+      if (highlightedTrailLayer) {
+        if (event.name === "OpenStreetMap") {
+          highlightedTrailLayer.setStyle({
+            color: "#FFFF00"
+          });
+        } else {
+          highlightedTrailLayer.setStyle({
+            color: "#FFFFFF"
+          });
+        }
       }
     });
   });
@@ -241,16 +248,11 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
     const offsetTop = target.getBoundingClientRect().top + window.pageYOffset;
     const docHeight = document.documentElement.scrollHeight;
 
-    // Calculate the centering offset
     let centeredPosition = offsetTop - windowHeight / 2 + targetHeight / 2;
 
-    // If section is near the top of the document, scroll to the top of the section
     if (centeredPosition < 0) {
       centeredPosition = offsetTop;
-    }
-
-    // If section is near the bottom of the document, adjust to show the section at the bottom of the viewport
-    else if (centeredPosition + windowHeight > docHeight) {
+    } else if (centeredPosition + windowHeight > docHeight) {
       centeredPosition = docHeight - windowHeight;
     }
 
