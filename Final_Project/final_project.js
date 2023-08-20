@@ -127,7 +127,7 @@ function initialize() {
           "<br>" +
           "<br>" +
           feature.properties.notes +
-          "<br>" +
+          "<br>" + "<br>" +
           galleryHtml +
           "<br>" +
           feature.properties.credits;
