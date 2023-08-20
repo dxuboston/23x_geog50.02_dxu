@@ -246,7 +246,7 @@ footer {
 .timeline ul li {
   list-style-type: none;
   position: relative;
-  width: 6px;
+  width: 7px;
   margin: 0 auto;
   padding-top: 50px;
   background: #001d09;
@@ -302,6 +302,7 @@ footer {
 }
 .timeline ul li div .stationname, .timeline ul li div .food, .timeline ul li div .mileage, .timeline ul li div .elevation {
   margin-right: 8px;
+  text-align: center;
 }
 .timeline ul li:nth-of-type(odd) > div {
   left: 45px;
