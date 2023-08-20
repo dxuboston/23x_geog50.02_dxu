@@ -147,7 +147,8 @@ function initialize() {
           "<br>" +
           feature.properties.credits;
 
-        layer.bindPopup(popupContent, { maxWidth: 400 });
+          layer.on("click", function () {
+            document.getElementById("info-content").innerHTML = popupContent, { maxWidth: 400 }});
 
         layer.on("click", function () {
           map.setView(layer.getLatLng(), 14);
