@@ -35,14 +35,6 @@ function initialize() {
   };
 
   L.control.layers(baseMaps).addTo(map);
-  // Add an event listener to the map for clicks
-  map.on('click', function(e) {
-    // Reset the info-content element with default message
-    document.getElementById("info-content").innerHTML = 'Click on a trail or station to display details';
-    // Zoom back out to the center
-    map.setView([43.8657, -72.037], 10);
-  });
-
 
   var trailsResponse = $.ajax({
     url: "The_DOC_Fifty_Trail.geojson",
