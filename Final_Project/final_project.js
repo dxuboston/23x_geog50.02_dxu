@@ -137,7 +137,7 @@ function initialize() {
         });
 
         layer.on("click", function () {
-          map.setView(layer.getLatLng(), 20);
+          map.setView(layer.getLatLng(), 15);
         });
       }
     }).addTo(map);
