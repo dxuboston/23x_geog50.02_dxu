@@ -58,8 +58,9 @@ function initialize() {
         dashArray: "5, 5"
       },
       onEachFeature: function (feature, layer) {
-        layer.bindPopup(
-          "<b>Name: " +
+        layer.on("click", function () {
+          document.getElementById("info-content").innerHTML =
+            "<b>Name: " +
             feature.properties.name +
             "</b><br>" +
             "Starting Point: " +
@@ -72,8 +73,8 @@ function initialize() {
             feature.properties.elev_ft +
             "<br>" +
             "Mileage: " +
-            feature.properties.dist_miles
-        );
+            feature.properties.dist_miles;
+        });
         layer.on("click", function (e) {
           trailslayer.eachLayer(function (l) {
             l.setStyle({

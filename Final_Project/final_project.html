@@ -73,7 +73,17 @@
       peers the most joyous hug of their lives.
     </p>
   </div>
-  <div id="map">
+  <div class="map-container"> <!-- New container to hold the map and the information box -->
+    <div id="map"></div> <!-- This is where your map currently resides -->
+
+    <!-- New flexbox for displaying information -->
+    <div class="info-box">
+        <h2>Details</h2>
+        <div id="info-content"> <!-- This is where the information will be populated -->
+            Click on a trail or station for details.
+        </div>
+    </div>
+</div>
   </div>
   <div id="buttons">
     <button class="toggle-button" id="toggleTrails">
