@@ -396,6 +396,7 @@ footer {
   }
 }
 .space-buffer {
-  margin-top: 65px;
-  margin-bottom: 65px;
+  margin-top: 60px;
+  margin-bottom: 60px;
+  text-align: justify;
 }/*# sourceMappingURL=scss_final_project.css.map */
