@@ -92,7 +92,7 @@ header {
   z-index: 990;
   height: 60vh;
   width: 100%;
-  margin: 20px auto;
+  margin: 20px ;
   box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   flex: 2; /* Takes up 2/3 of the container width */
@@ -103,6 +103,10 @@ header {
   padding: 10px;
   height: 500px; /* Match the map's height */
   overflow-y: auto; /* Add a scrollbar if content is too long */
+  margin-right: 5px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  background: #c8bfa5;
 }
 
 #info-content {
