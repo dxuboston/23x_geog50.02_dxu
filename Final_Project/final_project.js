@@ -91,20 +91,6 @@ function initialize() {
           var center = bounds.getCenter();
           map.setView(center, 12);
         });
-
-        layer.on("popupclose", function () {
-          map.setView([43.8657, -72.037], 10);
-
-          if (map.hasLayer(openStreetMapLayer)) {
-            trailslayer.setStyle({
-              color: "#006400"
-            });
-          } else {
-            trailslayer.setStyle({
-              color: "#FFFFFF"
-            });
-          }
-        });
       }
     }).addTo(map);
 
@@ -146,25 +132,12 @@ function initialize() {
           "<br>" +
           feature.properties.credits;
 
-          layer.on("click", function () {
-            document.getElementById("info-content").innerHTML = popupContent});
+        layer.on("click", function () {
+          document.getElementById("info-content").innerHTML = popupContent;
+        });
 
         layer.on("click", function () {
           map.setView(layer.getLatLng(), 14);
-        });
-
-        layer.on("popupclose", function () {
-          map.setView([43.8657, -72.037], 10);
-
-          if (map.hasLayer(openStreetMapLayer)) {
-            trailslayer.setStyle({
-              color: "#006400"
-            });
-          } else {
-            trailslayer.setStyle({
-              color: "#FFFFFF"
-            });
-          }
         });
       }
     }).addTo(map);
@@ -194,6 +167,8 @@ function initialize() {
 
     $("#homeButton").click(function () {
       map.setView([43.8657, -72.037], 10);
+      document.getElementById("info-content").innerHTML = 'Click on a trail or station to display details';
+      
 
       if (map.hasLayer(openStreetMapLayer)) {
         trailslayer.setStyle({
@@ -204,13 +179,6 @@ function initialize() {
           color: "#FFFFFF"
         });
       }
-
-      trailslayer.eachLayer(function (l) {
-        l.closePopup();
-      });
-      stationslayer.eachLayer(function (l) {
-        l.closePopup();
-      });
     });
 
     map.on("baselayerchange", function (event) {
