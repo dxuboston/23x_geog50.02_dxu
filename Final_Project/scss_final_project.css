@@ -131,6 +131,10 @@ header {
   position: relative;
   justify-content: center;
   margin-top: 20px;
+  background: #c8bfa5;
+  padding: 30px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
 }
 
 .content {
