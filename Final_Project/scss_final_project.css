@@ -413,6 +413,7 @@ footer {
 
 .card {
   max-width: 100%;
+  overflow-y: auto;
   text-align: justify;
   margin: 10px;
   background: rgba(231, 227, 221, 0.4784313725);
