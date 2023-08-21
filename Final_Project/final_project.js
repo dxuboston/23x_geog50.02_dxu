@@ -188,18 +188,18 @@ function initialize() {
     });
 
     map.on("baselayerchange", function (event) {
-      if (highlightedTrailLayer) {
-        if (event.name === "OpenStreetMap") {
-          highlightedTrailLayer.setStyle({
-            color: "#FFFF00"
-          });
-        } else {
-          highlightedTrailLayer.setStyle({
-            color: "#FFFFFF"
-          });
+        if (highlightedTrailLayer) {
+          if (event.name === "OpenStreetMap") {
+            highlightedTrailLayer.setStyle({
+              color: "#FFFF00" // Yellow for highlighted
+            });
+          } else {
+            highlightedTrailLayer.setStyle({
+              color: "#006400" // Dark green for default
+            });
+          }
         }
-      }
-    });
+      });      
   });
 }
 
