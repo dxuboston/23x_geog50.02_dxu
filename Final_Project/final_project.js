@@ -170,37 +170,36 @@ function initialize() {
     });
 
     $("#homeButton").click(function () {
-        map.setView([43.8657, -72.037], 10);
-        document.getElementById("info-content").innerHTML =
-          "Click on a trail or station to display details";
-      
-        if (highlightedTrailLayer) {
-          if (map.hasLayer(openStreetMapLayer)) {
-            highlightedTrailLayer.setStyle({
-              color: "#FFFF00" // Yellow for highlighted
-            });
-          } else {
-            highlightedTrailLayer.setStyle({
-              color: "#006400" // Dark green for default
-            });
-          }
-          highlightedTrailLayer = null; // Reset highlightedTrailLayer
+      map.setView([43.8657, -72.037], 10);
+      document.getElementById("info-content").innerHTML =
+        "Click on a trail or station to display details";
+
+      if (highlightedTrailLayer) {
+        if (map.hasLayer(openStreetMapLayer)) {
+          highlightedTrailLayer.setStyle({
+            color: "#FFFF00"
+          });
+        } else {
+          highlightedTrailLayer.setStyle({
+            color: "#FFFFFF"
+          });
         }
-      });
+      }
+    });
 
     map.on("baselayerchange", function (event) {
-        if (highlightedTrailLayer) {
-          if (event.name === "OpenStreetMap") {
-            highlightedTrailLayer.setStyle({
-              color: "#FFFF00" // Yellow for highlighted
-            });
-          } else {
-            highlightedTrailLayer.setStyle({
-              color: "#006400" // Dark green for default
-            });
-          }
+      if (highlightedTrailLayer) {
+        if (event.name === "OpenStreetMap") {
+          highlightedTrailLayer.setStyle({
+            color: "#FFFF00"
+          });
+        } else {
+          highlightedTrailLayer.setStyle({
+            color: "#FFFFFF"
+          });
         }
-      });
+      }
+    });
   });
 }
 
